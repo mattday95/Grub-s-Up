@@ -1,0 +1,23 @@
+.c-discount-tag {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    font-size: 10px;
+    letter-spacing: .5px;
+    line-height: 12px;
+    text-align: center;
+
+    &__tag {
+        max-width: 60px;
+        background: #f47925;
+        color: #fff;
+        text-transform: uppercase;
+        padding: 3px;
+        border-radius: 2px;
+    }
+
+    &__description {
+        margin-top: 2px;
+        color: #888;
+    }
+}

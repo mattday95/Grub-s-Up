@@ -1,0 +1,72 @@
+.c-restaurant-card {
+    margin-bottom: 10px;
+    background-color: #FFF;
+    
+    > a {
+        display: flex;
+        padding: 10px;
+    }
+
+    &__thumbnail {
+        position: relative;
+        height: 100px;
+        min-width: 100px;
+        border-radius: 4px;
+        border: 1px solid #eee;
+        overflow: hidden;
+
+        img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            object-fit: contain;
+        }
+    }
+
+    &__info {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        padding: 5px 10px;
+        border-right: 1px solid #eee;
+
+        &__header {
+
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+
+            > h2 {
+                font-size: 16px;
+                color: #333;
+            }
+        }
+
+
+        &__cuisines {
+            display: flex;
+            font-size: 14px;
+            color: #888;
+
+            li {
+
+            font-weight: 300;
+
+                &:not(:last-of-type):after{
+                    margin-right: 5px;
+                    content: ',';
+                }
+            }
+        }
+
+        &__meta {
+            margin-top: auto;
+        }
+    }
+
+    &__ratings {
+        
+    }
+}
