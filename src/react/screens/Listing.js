@@ -69,6 +69,13 @@ export default class Listing extends Component {
                                     </div>
                                     <ul className="o-listings__restaurant-list__restaurants">{restaurants.map( restaurant => <RestaurantCard restaurant={restaurant}/>) }</ul>
                                 </div>
+
+                                <div className="restaurant-list-container"> 
+                                    <div className="o-listings__restaurant-list__header o-listings__restaurant-list__header--closed">
+                                        <h3>Currently closed ({restaurants.length})</h3>
+                                    </div>
+                                    {/* <ul className="o-listings__restaurant-list__restaurants">{restaurants.map( restaurant => <RestaurantCard restaurant={restaurant}/>) }</ul> */}
+                                </div>
                             </Grid>
                         </Grid>
 

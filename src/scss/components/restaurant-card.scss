@@ -63,10 +63,28 @@
 
         &__meta {
             margin-top: auto;
+
+            &__field {
+
+            display: flex;
+            align-items: center;
+
+                svg {
+                    width: 20px;
+                    height: 20px;
+                    fill : #d82927;
+                }
+
+                span {
+                    font-size: 13px;
+                    color: #555;
+                    line-height: 12px;
+                }
+            }
         }
     }
 
     &__ratings {
-        
+
     }
 }

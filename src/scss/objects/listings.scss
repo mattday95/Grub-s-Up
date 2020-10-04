@@ -35,6 +35,15 @@
                 font-size: 16px;
                 color: #63c156;
             }
+
+            &--closed {
+
+            margin-top: 20px;
+
+                h3 {
+                    color: #d82927;
+                }
+            }
         }
     }
 }
