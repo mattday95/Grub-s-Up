@@ -21,3 +21,34 @@ function gu_calculate_distance($lat1, $lon1, $lat2, $lon2, $unit) {
       }
     }
 }
+
+function gu_get_day_of_week() {
+    $days = array('sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday');
+    $current_day_index = date('w');
+    return $days[$current_day_index];
+}
+
+function gu_is_restaurant_open( $restaurant ){
+
+    $current_day = gu_get_day_of_week();
+    $current_time = date_i18n('g:i a');
+
+    $opening_hours = get_field('opening_hours', $restaurant->ID);
+    $opening_time = null;
+    $closing_time = null;
+    
+
+    if( $opening_hours['open_for_business'] && $opening_hours['days'] ):
+
+        foreach( $opening_hours['days'] as $day):
+            if($day['day'] == $current_day):
+                $opening_time = $day['opening_time'];
+                $closing_time = $day['closing_time'];
+            endif;
+        endforeach;
+    endif;
+
+    if($opening_time !== null && $closing_time !== null):
+        return strtotime($current_time) >= strtotime($opening_time) && strtotime($current_time) < strtotime($closing_time);
+    endif;
+}
