@@ -61,38 +61,54 @@ function gu_get_restaurants( WP_REST_Request $request ) {
         foreach ( $filtered_restaurants as $restaurant ):
 
         $discount = false;
+        $cuisine_data = [];
+        $cuisines = get_the_terms($restaurant->ID, 'cuisines');
         $times = get_field('times', $restaurant->ID);
         $restaurant_location = get_field('restaurant_location', $restaurant->ID);
         $distance = gu_calculate_distance($customer_location['lat'], $customer_location['lng'], $restaurant_location['lat'], $restaurant_location['lng'], "M");
 
-        if( get_field('apply_discount', $restaurant->ID) && get_field('discount_rate', $restaurant->ID) ):
+            if( get_field('apply_discount', $restaurant->ID) && get_field('discount_rate', $restaurant->ID) ):
 
-            $discount_rate = get_field('discount_rate', $restaurant->ID);
-            $minimum_spend = get_field('add_minimum_spend', $restaurant->ID) && get_field('minimum_spend', $restaurant->ID) ? get_field('minimum_spend', $restaurant->ID) : false;
+                $discount_rate = get_field('discount_rate', $restaurant->ID);
+                $minimum_spend = get_field('add_minimum_spend', $restaurant->ID) && get_field('minimum_spend', $restaurant->ID) ? get_field('minimum_spend', $restaurant->ID) : false;
 
-            
-            $discount = array(
-                'rate' => $discount_rate,
-                'minimum_spend'=> $minimum_spend
+                
+                $discount = array(
+                    'rate' => $discount_rate,
+                    'minimum_spend'=> $minimum_spend
+                );
+
+            endif;
+
+            if( $cuisines ):
+
+                foreach ($cuisines as $cuisine):
+        
+                    $cuisine_data[] = array(
+                        'id' => $cuisine->term_id,
+                        'name' => $cuisine->name,
+                        'featured_image' => get_field('featured_image', $cuisine->taxonomy . '_' . $cuisine->term_id)['url']
+                    );
+                    
+                endforeach;
+
+            endif;
+
+            $data[] = array(
+                'name' => get_the_title($restaurant->ID),
+                'id' => $restaurant->ID,
+                'link' => get_the_permalink($restaurant->ID),
+                'logo' => get_field('restaurant_logo', $restaurant->ID),
+                'location' => $restaurant_location,
+                'distance' => number_format((float)$distance, 2, '.', ''),
+                'discount' => $discount,
+                'cuisines' => $cuisine_data,
+                'times' => array(
+                    'collection' => $times['average_collection_time'], 
+                    'delivery' => $times['average_delivery_time'] 
+                ),
+                'is_open' => gu_is_restaurant_open($restaurant)
             );
-
-        endif;
-
-        $data[] = array(
-            'name' => get_the_title($restaurant->ID),
-            'id' => $restaurant->ID,
-            'link' => get_the_permalink($restaurant->ID),
-            'logo' => get_field('restaurant_logo', $restaurant->ID),
-            'location' => $restaurant_location,
-            'distance' => number_format((float)$distance, 2, '.', ''),
-            'discount' => $discount,
-            'times' => array(
-                'collection' => $times['average_collection_time'], 
-                'delivery' => $times['average_delivery_time'] 
-            ),
-            'is_open' => gu_is_restaurant_open($restaurant),
-            'cuisines' => get_the_terms( $restaurant->ID , 'cuisines' ) ? get_the_terms( $restaurant->ID , 'cuisines' ) : []
-        );
     
         endforeach;
 

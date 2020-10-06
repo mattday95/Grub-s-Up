@@ -20,29 +20,35 @@ export default class Listing extends Component {
 
         const apiBaseURL = 'http://grubsup.local/api/consumer';
         const restaurantEndpoint = '/restaurants';
-        const cuisineEndpoint = '/cuisines';
         const postcodeQuery =   this.props.match.params.postcode ? `?postcode=${this.props.match.params.postcode}` : '';
 
-        axios.all([
-            axios.get(apiBaseURL + restaurantEndpoint + postcodeQuery)
-                .then(res => {
-                    const restaurants = res.data;
-                    this.setState({ restaurants });
-                })
-            ,
-            axios.get(apiBaseURL + cuisineEndpoint)
-                .then(res => {
-                    const cuisines = res.data;
-                    this.setState({ cuisines });
-                })
-        ])
+        axios.get(apiBaseURL + restaurantEndpoint + postcodeQuery)
+            .then(res => {
+                const restaurants = res.data;
+                this.setState({ restaurants });
+            });
+
     }
 
     render() {
 
-        const {restaurants, cuisines} = this.state; 
+        const {restaurants} = this.state; 
         const openRestaurants = restaurants.filter( restaurant => restaurant.is_open);
         const closedRestaurants = restaurants.filter( restaurant => !restaurant.is_open);
+        let cuisineData = [];
+
+        restaurants.forEach(restaurant => cuisineData.push(restaurant.cuisines));
+
+        cuisineData =  [].concat.apply([], cuisineData);
+        
+        const cuisines = cuisineData.reduce((acc, current) => {
+            const x = acc.find(item => item.id === current.id);
+            if (!x) {
+              return acc.concat([current]);
+            } else {
+              return acc;
+            }
+          }, []);
 
         return (
             <Grid container spacing={3}>
@@ -59,7 +65,7 @@ export default class Listing extends Component {
                                         <h3>Cuisines</h3>
                                     </div>
                                     <Grid container spacing={1}>
-                                        { cuisines.map( cuisine => <CuisineCard cuisine={cuisine}/>)}
+                                        { cuisines.map( cuisine => <CuisineCard key={cuisine.term_id} cuisine={cuisine}/>)}
                                     </Grid>
                                 </div>
                             </Grid>

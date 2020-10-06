@@ -10,7 +10,7 @@ export default function CuisineCard(props) {
                     <img src={props.cuisine.featured_image}/>
                 </div>
                 <div className="c-cuisine-card__description">
-                    <span>{props.cuisine.cuisine.name} ({props.cuisine.cuisine.count})</span>
+                    <span>{props.cuisine.name} ({props.cuisine.count})</span>
                 </div>
             </div>
         </Grid>
