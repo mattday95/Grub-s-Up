@@ -1,5 +1,7 @@
 import React from 'react';
+import { BiShoppingBag } from 'react-icons/bi';
 import { MdLocationOn } from 'react-icons/md';
+import { RiEBikeFill } from 'react-icons/ri';
 import Skeleton from 'react-loading-skeleton';
 
 export default function RestaurantCard(props) {
@@ -37,6 +39,20 @@ export default function RestaurantCard(props) {
                             <MdLocationOn/>
                             <span>{props.restaurant.distance} miles</span>
                         </div>
+                        {
+                            props.restaurant.times.collection &&
+                            <div class="c-restaurant-card__info__meta__field">
+                                <BiShoppingBag/>
+                                <span>{props.restaurant.times.collection} mins</span>
+                            </div>
+                        }
+                        {
+                            props.restaurant.times.delivery &&
+                            <div class="c-restaurant-card__info__meta__field">
+                                <RiEBikeFill/>
+                                <span>{props.restaurant.times.delivery} mins</span>
+                            </div>
+                        }
                     </div>
                 </div>
                 <div className="c-restaurant-card__ratings">

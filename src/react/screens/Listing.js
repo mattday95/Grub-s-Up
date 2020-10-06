@@ -41,6 +41,8 @@ export default class Listing extends Component {
     render() {
 
         const {restaurants, cuisines} = this.state; 
+        const openRestaurants = restaurants.filter( restaurant => restaurant.is_open);
+        const closedRestaurants = restaurants.filter( restaurant => !restaurant.is_open);
 
         return (
             <Grid container spacing={3}>
@@ -65,16 +67,16 @@ export default class Listing extends Component {
                             <Grid item xs={12} md={9}>
                                 <div className="restaurant-list-container"> 
                                     <div className="o-listings__restaurant-list__header">
-                                        <h3>Currently open ({restaurants.length})</h3>
+                                        <h3>Currently open ({openRestaurants.length})</h3>
                                     </div>
-                                    <ul className="o-listings__restaurant-list__restaurants">{restaurants.map( restaurant => <RestaurantCard restaurant={restaurant}/>) }</ul>
+                                    <ul className="o-listings__restaurant-list__restaurants">{openRestaurants.map( restaurant => <RestaurantCard key={restaurant.id} restaurant={restaurant}/>) }</ul>
                                 </div>
 
                                 <div className="restaurant-list-container"> 
                                     <div className="o-listings__restaurant-list__header o-listings__restaurant-list__header--closed">
-                                        <h3>Currently closed ({restaurants.length})</h3>
+                                        <h3>Currently closed ({closedRestaurants.length})</h3>
                                     </div>
-                                    {/* <ul className="o-listings__restaurant-list__restaurants">{restaurants.map( restaurant => <RestaurantCard restaurant={restaurant}/>) }</ul> */}
+                                    <ul className="o-listings__restaurant-list__restaurants">{closedRestaurants.map( restaurant => <RestaurantCard key={restaurant.id} restaurant={restaurant}/>) }</ul>
                                 </div>
                             </Grid>
                         </Grid>

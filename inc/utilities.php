@@ -30,6 +30,7 @@ function gu_get_day_of_week() {
 
 function gu_is_restaurant_open( $restaurant ){
 
+    $is_open = false;
     $current_day = gu_get_day_of_week();
     $current_time = date_i18n('g:i a');
 
@@ -49,6 +50,8 @@ function gu_is_restaurant_open( $restaurant ){
     endif;
 
     if($opening_time !== null && $closing_time !== null):
-        return strtotime($current_time) >= strtotime($opening_time) && strtotime($current_time) < strtotime($closing_time);
+        $is_open = strtotime($current_time) >= strtotime($opening_time) && strtotime($current_time) < strtotime($closing_time);
     endif;
+
+    return $is_open;
 }

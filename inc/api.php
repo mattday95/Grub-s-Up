@@ -61,6 +61,7 @@ function gu_get_restaurants( WP_REST_Request $request ) {
         foreach ( $filtered_restaurants as $restaurant ):
 
         $discount = false;
+        $times = get_field('times', $restaurant->ID);
         $restaurant_location = get_field('restaurant_location', $restaurant->ID);
         $distance = gu_calculate_distance($customer_location['lat'], $customer_location['lng'], $restaurant_location['lat'], $restaurant_location['lng'], "M");
 
@@ -79,11 +80,16 @@ function gu_get_restaurants( WP_REST_Request $request ) {
 
         $data[] = array(
             'name' => get_the_title($restaurant->ID),
+            'id' => $restaurant->ID,
             'link' => get_the_permalink($restaurant->ID),
             'logo' => get_field('restaurant_logo', $restaurant->ID),
             'location' => $restaurant_location,
             'distance' => number_format((float)$distance, 2, '.', ''),
             'discount' => $discount,
+            'times' => array(
+                'collection' => $times['average_collection_time'], 
+                'delivery' => $times['average_delivery_time'] 
+            ),
             'is_open' => gu_is_restaurant_open($restaurant),
             'cuisines' => get_the_terms( $restaurant->ID , 'cuisines' ) ? get_the_terms( $restaurant->ID , 'cuisines' ) : []
         );
