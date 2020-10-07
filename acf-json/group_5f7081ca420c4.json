@@ -3,6 +3,25 @@
     "title": "Restaurant Basic Information",
     "fields": [
         {
+            "key": "field_5f7e0d790ebbc",
+            "label": "Restaurant Description",
+            "name": "restaurant_description",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": "",
+            "new_lines": ""
+        },
+        {
             "key": "field_5f788011fb0ae",
             "label": "Restaurant Location",
             "name": "restaurant_location",
@@ -236,5 +255,5 @@
     ],
     "active": true,
     "description": "",
-    "modified": 1602009811
+    "modified": 1602096522
 }

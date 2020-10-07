@@ -22,7 +22,7 @@ function gu_get_restaurants( WP_REST_Request $request ) {
 
     $data = array();
 
-    if($request['postcode']){
+    if($request['postcode']):
 
         $postcode = urlencode($request['postcode']);
 
@@ -33,10 +33,16 @@ function gu_get_restaurants( WP_REST_Request $request ) {
             ),
         );  
 
-        $postcode_data = file_get_contents("https://maps.googleapis.com/maps/api/geocode/json?address=".$postcode."&key=AIzaSyA99pWkEHbin-urBWAEOQNYQ65MP7M02wM", false, stream_context_create($arrContextOptions));
+        $postcode_data = file_get_contents("https://maps.googleapis.com/maps/api/geocode/json?address=".$postcode."&key=".get_field('google_api_key', 'option'), false, stream_context_create($arrContextOptions));
         $postcode_data = json_decode($postcode_data, true);
-        $customer_location = $postcode_data['results'][0]['geometry']['bounds']['northeast'];
-    }
+        $ne_bounds = $postcode_data['results'][0]['geometry']['bounds']['northeast'];
+        $sw_bounds = $postcode_data['results'][0]['geometry']['bounds']['southwest'];
+        $customer_location = array(
+            'lat' => ($ne_bounds['lat'] + $sw_bounds['lat']) / 2,
+            'lng' => ($ne_bounds['lng'] + $sw_bounds['lng']) / 2
+        );
+
+    endif;
 
     $args = array(
         'post_type' => 'restaurant',
@@ -45,16 +51,19 @@ function gu_get_restaurants( WP_REST_Request $request ) {
 
     $query = new WP_Query($args);
     $all_restaurants = $query->posts;
+    $search_radius = get_field('restaurant_search_radius', 'option') ? get_field('restaurant_search_radius', 'option') : 5;
     
     $filtered_restaurants = [];
 
-    foreach( $all_restaurants as $key => $restaurant ){
+    foreach( $all_restaurants as $key => $restaurant ):
 
         $restaurant_location = get_field('restaurant_location', $restaurant->ID);
-        if( gu_calculate_distance($customer_location['lat'], $customer_location['lng'], $restaurant_location['lat'], $restaurant_location['lng'], "M") <= 5 ){
+
+        if( gu_calculate_distance($customer_location['lat'], $customer_location['lng'], $restaurant_location['lat'], $restaurant_location['lng'], "M") <= $search_radius):
             array_push($filtered_restaurants, $restaurant);
-        }
-    }
+        endif;
+
+    endforeach;
 
     if($filtered_restaurants):
 
