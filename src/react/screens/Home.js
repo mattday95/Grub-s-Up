@@ -66,7 +66,7 @@ class Home extends Component {
                     <p style={{color: '#d82927'}}>{this.state.error && this.state.isUserActive && <span>Make sure you supply a valid UK postcode.</span>}</p>
                     <form class="c-postcode-search">
                         <input onFocus={() => this.setState({isUserActive : true})} onBlur={() => this.setState({isUserActive : false})} onChange={(e) => this.onChangeHandler(e)} type="text" placeholder="Write your postcode here..."></input>
-                        <button onClick={(e) => this.handlePostcodeSubmit(e)} type="submit">Submit</button>
+                        <button class="c-button c-button--primary" onClick={(e) => this.handlePostcodeSubmit(e)} type="submit">Find Takeaway</button>
                     </form>
                 </div>
             </div>

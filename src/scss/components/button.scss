@@ -1,0 +1,25 @@
+.c-button {
+    border: 1px solid transparent;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: .25rem;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 300;
+    white-space: nowrap;
+    outline: none;
+
+    &--primary {
+        background-color: #d82927;
+        border-color: #d82927;
+        color: #fff;
+
+        &:hover {
+            background-color: transparent;
+            color:  #d82927;
+        }
+    }
+}
