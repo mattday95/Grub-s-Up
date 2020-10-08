@@ -1,0 +1,15 @@
+.c-postcode-search {
+    padding: 15px;
+    display: flex;
+    width: 70%;
+    background-color: #fff;
+    background-clip: initial;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: .25rem;
+
+    input {
+        width: 100%;
+        outline: none;
+        border: none;
+    }
+}
