@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import Grid from '@material-ui/core/Grid';
 import axios from 'axios';
 
 import Header from '../objects/Header';
@@ -12,7 +11,7 @@ export default class Listing extends Component {
         super(props);
         this.state = {
             restaurants : [],
-            cuisines : []
+            cuisineData : []
         }
     }
 
@@ -25,21 +24,42 @@ export default class Listing extends Component {
         axios.get(apiBaseURL + restaurantEndpoint + postcodeQuery)
             .then(res => {
                 const restaurants = res.data;
-                this.setState({ restaurants });
+                this.setState({ restaurants : restaurants, cuisineData : this.getCuisinesFromRestaurants(restaurants) });
             });
 
     }
 
-    render() {
+    getCuisinesFromRestaurants( restaurants ) {
 
-        const {restaurants} = this.state; 
-        const openRestaurants = restaurants.filter( restaurant => restaurant.is_open);
-        const closedRestaurants = restaurants.filter( restaurant => !restaurant.is_open);
         let cuisineData = [];
 
         restaurants.forEach(restaurant => cuisineData.push(restaurant.cuisines));
 
         cuisineData =  [].concat.apply([], cuisineData);
+        
+        return cuisineData;
+    }
+
+    getCuisineCount(id) {
+
+        const cuisineData = this.state.cuisineData;
+        console.log(cuisineData);
+        let count = 0;
+
+        cuisineData.forEach( entry => {
+            if(entry.id === id){
+                count++;
+            }
+        });
+
+        return count;
+    }
+
+    render() {
+
+        const {restaurants, cuisineData} = this.state; 
+        const openRestaurants = restaurants.filter( restaurant => restaurant.is_open);
+        const closedRestaurants = restaurants.filter( restaurant => !restaurant.is_open);
         
         const cuisines = cuisineData.reduce((acc, current) => {
             const x = acc.find(item => item.id === current.id);
@@ -51,45 +71,46 @@ export default class Listing extends Component {
           }, []);
 
         return (
-            <Grid container spacing={3}>
 
-                <Grid item xs={12} container>
+            <div>
 
-                        <Grid item xs={0} sm={1}/>
-                        
-                        <Grid item xs={12} sm={10} container spacing={3}>
+            <Header/>
+                     
+            <div className="grid-container o-listings">
 
-                            <Grid item xs={12} md={3}>
-                                <div class="o-listings__cuisine-list">
-                                    <div className="o-listings__cuisine-list__header">
-                                        <h3>Cuisines</h3>
-                                    </div>
-                                    <Grid container spacing={1}>
-                                        { cuisines.map( cuisine => <CuisineCard key={cuisine.term_id} cuisine={cuisine}/>)}
-                                    </Grid>
-                                </div>
-                            </Grid>
+                <div className="grid-x grid-margin-x">
+                    <div className="cell small-12 medium-4">
+                        <div class="o-listings__cuisine-list">
+                            <div className="o-listings__cuisine-list__header">
+                                <h3>Cuisines</h3>
+                            </div>
+                            <div className="grid-x grid-margin-x">
+                                { cuisines.map( cuisine => <CuisineCard key={cuisine.id} count={this.getCuisineCount(cuisine.id)} cuisine={cuisine}/>)}
+                            </div>
+                        </div>
+                    </div>
 
-                            <Grid item xs={12} md={9}>
-                                <div className="restaurant-list-container"> 
-                                    <div className="o-listings__restaurant-list__header">
-                                        <h3>Currently open ({openRestaurants.length})</h3>
-                                    </div>
-                                    <ul className="o-listings__restaurant-list__restaurants">{openRestaurants.map( restaurant => <RestaurantCard key={restaurant.id} restaurant={restaurant}/>) }</ul>
-                                </div>
+                    <div className="cell small-12 medium-8">
+                        <div className="restaurant-list-container"> 
+                            <div className="o-listings__restaurant-list__header">
+                                <h3>Currently open ({openRestaurants.length})</h3>
+                            </div>
+                            <ul className="o-listings__restaurant-list__restaurants">{openRestaurants.map( restaurant => <RestaurantCard key={restaurant.id} restaurant={restaurant}/>) }</ul>
+                        </div>
 
-                                <div className="restaurant-list-container"> 
-                                    <div className="o-listings__restaurant-list__header o-listings__restaurant-list__header--closed">
-                                        <h3>Currently closed ({closedRestaurants.length})</h3>
-                                    </div>
-                                    <ul className="o-listings__restaurant-list__restaurants">{closedRestaurants.map( restaurant => <RestaurantCard key={restaurant.id} restaurant={restaurant}/>) }</ul>
-                                </div>
-                            </Grid>
-                        </Grid>
+                        <div className="restaurant-list-container"> 
+                            <div className="o-listings__restaurant-list__header o-listings__restaurant-list__header--closed">
+                                <h3>Currently closed ({closedRestaurants.length})</h3>
+                            </div>
+                            <ul className="o-listings__restaurant-list__restaurants">{closedRestaurants.map( restaurant => <RestaurantCard key={restaurant.id} restaurant={restaurant}/>) }</ul>
+                        </div>
+                    </div>
+                </div>
 
-                        <Grid item xs={0} sm={1}/>
-                </Grid>
-            </Grid>
+            </div>
+
+            </div>
+
         )
     }
 }

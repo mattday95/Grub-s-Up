@@ -7,8 +7,6 @@
     transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
     cursor: pointer;
     text-transform: uppercase;
-    letter-spacing: 1px;
-    font-weight: 300;
     white-space: nowrap;
     outline: none;
 
@@ -16,10 +14,20 @@
         background-color: #d82927;
         border-color: #d82927;
         color: #fff;
+        letter-spacing: 1px;
+        font-weight: 300;
 
         &:hover {
             background-color: transparent;
             color:  #d82927;
         }
+    }
+
+    &--order {
+        background-color: #63c156;
+        border-color: #63c156;
+        color: #fff;
+        font-size: .7rem;
+        font-weight: 500;
     }
 }

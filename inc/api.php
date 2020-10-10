@@ -76,6 +76,7 @@ function gu_get_restaurants( WP_REST_Request $request ) {
         $cuisines = get_the_terms($restaurant->ID, 'cuisines');
         $times = get_field('times', $restaurant->ID);
         $restaurant_location = get_field('restaurant_location', $restaurant->ID);
+        $reviews = gu_get_reviews_by_restaurant($restaurant);
         $distance = gu_calculate_distance($customer_location['lat'], $customer_location['lng'], $restaurant_location['lat'], $restaurant_location['lng'], "M");
 
             if( get_field('apply_discount', $restaurant->ID) && get_field('discount_rate', $restaurant->ID) ):
@@ -114,6 +115,10 @@ function gu_get_restaurants( WP_REST_Request $request ) {
                 'distance' => number_format((float)$distance, 2, '.', ''),
                 'discount' => $discount,
                 'cuisines' => $cuisine_data,
+                'reviews' => array(
+                    'num_reviews' => count($reviews),
+                    'average_rating' => count($reviews) > 0 ? gu_get_average_rating($reviews) : 0
+                ),
                 'times' => array(
                     'collection' => $times['average_collection_time'], 
                     'delivery' => $times['average_delivery_time'] 

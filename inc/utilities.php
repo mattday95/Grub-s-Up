@@ -55,3 +55,38 @@ function gu_is_restaurant_open( $restaurant ){
 
     return $is_open;
 }
+
+function gu_get_reviews_by_restaurant($restaurant){
+
+  $args = array(
+    'post_type' => 'review',
+    'posts_per_page' => -1,
+    'meta_query'	=> array(
+        array(
+          'key'	 	=> 'restaurant',
+          'value'	  	=> $restaurant->ID,
+          'compare' 	=> '=',
+        ),
+    )
+    );
+
+    $query = new WP_Query($args);
+
+    return $query->have_posts() ? $query->posts : [];
+}
+
+function gu_get_average_rating($reviews) {
+
+  $average_rating = 0;
+  $sum_ratings = 0;
+
+  foreach($reviews as $review):
+
+  $sum_ratings += get_field('star_rating', $review->ID);
+
+  endforeach;
+
+  $average_rating = $sum_ratings / count($reviews);
+
+  return $average_rating;
+}

@@ -1,4 +1,5 @@
 import React from 'react';
+import StarRatings from 'react-star-ratings';
 import { BiShoppingBag } from 'react-icons/bi';
 import { MdLocationOn } from 'react-icons/md';
 import { RiEBikeFill } from 'react-icons/ri';
@@ -56,7 +57,16 @@ export default function RestaurantCard(props) {
                     </div>
                 </div>
                 <div className="c-restaurant-card__ratings">
-
+                    <StarRatings
+                        rating={props.restaurant.reviews.average_rating}
+                        starRatedColor="#d82927"
+                        numberOfStars={5}
+                        starDimension="17px"
+                        starSpacing="2px"
+                        name='rating'
+                    />
+                    <span>{`${props.restaurant.reviews.num_reviews} ${props.restaurant.reviews.num_reviews > 1 || props.restaurant.reviews.num_reviews === 0 ? 'Reviews' : 'Review'}`}</span>
+                    <button className="c-button c-button--order">Order Now</button>
                 </div>
             </a>
         </li>
