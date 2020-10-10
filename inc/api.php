@@ -123,6 +123,8 @@ function gu_get_restaurants( WP_REST_Request $request ) {
                     'collection' => $times['average_collection_time'], 
                     'delivery' => $times['average_delivery_time'] 
                 ),
+                'open_for_collection' => gu_is_service_available($restaurant, 'collection'),
+                'open_for_delivery' => gu_is_service_available($restaurant, 'delivery'),
                 'is_open' => gu_is_restaurant_open($restaurant)
             );
     

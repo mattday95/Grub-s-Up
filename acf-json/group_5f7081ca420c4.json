@@ -184,6 +184,188 @@
                             "return_format": "g:i a"
                         }
                     ]
+                },
+                {
+                    "key": "field_5f81e587b77b7",
+                    "label": "Collection Hours",
+                    "name": "collection_hours",
+                    "type": "repeater",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_5f7b7a18b851a",
+                                "operator": "==",
+                                "value": "1"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "collapsed": "",
+                    "min": 0,
+                    "max": 7,
+                    "layout": "table",
+                    "button_label": "Add Entry",
+                    "sub_fields": [
+                        {
+                            "key": "field_5f81e587b77b8",
+                            "label": "Day",
+                            "name": "day",
+                            "type": "select",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "monday": "Monday",
+                                "tuesday": "Tuesday",
+                                "wednesday": "Wednesday",
+                                "thursday": "Thursday",
+                                "friday": "Friday",
+                                "saturday": "Saturday",
+                                "sunday": "Sunday"
+                            },
+                            "default_value": false,
+                            "allow_null": 0,
+                            "multiple": 0,
+                            "ui": 0,
+                            "ajax": 0,
+                            "return_format": "value",
+                            "placeholder": ""
+                        },
+                        {
+                            "key": "field_5f81e587b77b9",
+                            "label": "Collection Start",
+                            "name": "collection_start",
+                            "type": "time_picker",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "display_format": "",
+                            "return_format": ""
+                        },
+                        {
+                            "key": "field_5f81e587b77ba",
+                            "label": "Collection End",
+                            "name": "collection_end",
+                            "type": "time_picker",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "display_format": "",
+                            "return_format": ""
+                        }
+                    ]
+                },
+                {
+                    "key": "field_5f81e5bab77bb",
+                    "label": "Delivery Hours",
+                    "name": "delivery_hours",
+                    "type": "repeater",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_5f7b7a18b851a",
+                                "operator": "==",
+                                "value": "1"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "collapsed": "",
+                    "min": 0,
+                    "max": 7,
+                    "layout": "table",
+                    "button_label": "Add Entry",
+                    "sub_fields": [
+                        {
+                            "key": "field_5f81e5bab77bc",
+                            "label": "Day",
+                            "name": "day",
+                            "type": "select",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "monday": "Monday",
+                                "tuesday": "Tuesday",
+                                "wednesday": "Wednesday",
+                                "thursday": "Thursday",
+                                "friday": "Friday",
+                                "saturday": "Saturday",
+                                "sunday": "Sunday"
+                            },
+                            "default_value": false,
+                            "allow_null": 0,
+                            "multiple": 0,
+                            "ui": 0,
+                            "ajax": 0,
+                            "return_format": "value",
+                            "placeholder": ""
+                        },
+                        {
+                            "key": "field_5f81e5bab77bd",
+                            "label": "Delivery Start",
+                            "name": "delivery_start",
+                            "type": "time_picker",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "display_format": "g:i a",
+                            "return_format": "g:i a"
+                        },
+                        {
+                            "key": "field_5f81e5bab77be",
+                            "label": "Delivery End",
+                            "name": "delivery_end",
+                            "type": "time_picker",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "display_format": "g:i a",
+                            "return_format": "g:i a"
+                        }
+                    ]
                 }
             ]
         },
@@ -276,5 +458,5 @@
     ],
     "active": true,
     "description": "",
-    "modified": 1602181222
+    "modified": 1602348525
 }

@@ -56,6 +56,47 @@ function gu_is_restaurant_open( $restaurant ){
     return $is_open;
 }
 
+function gu_is_service_available( $restaurant, $service ){
+
+  $is_service_available = false;
+  $current_day = gu_get_day_of_week();
+  $current_time = date_i18n('g:i a');
+
+  $opening_hours = get_field('opening_hours', $restaurant->ID);
+  $opening_time = null;
+  $closing_time = null;
+  $service_hours = [];
+  
+
+  if( $opening_hours['open_for_business'] ):
+
+      switch ($service) {
+          case 'collection':
+              $service_hours = $opening_hours['collection_hours'];
+              break;
+          case 'delivery':
+              $service_hours = $opening_hours['delivery_hours'];
+              break;
+      }
+
+      if($service_hours):
+        foreach( $service_hours as $day):
+            if($day['day'] == $current_day):
+                $opening_time = $day[$service.'_start'];
+                $closing_time = $day[$service.'_end'];
+            endif;
+        endforeach;
+      endif;
+
+  endif;
+
+  if($opening_time !== null && $closing_time !== null):
+      $is_service_available = strtotime($current_time) >= strtotime($opening_time) && strtotime($current_time) < strtotime($closing_time);
+  endif;
+
+  return $is_service_available;
+}
+
 function gu_get_reviews_by_restaurant($restaurant){
 
   $args = array(
