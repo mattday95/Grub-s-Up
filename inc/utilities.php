@@ -59,12 +59,10 @@ function gu_is_restaurant_open( $restaurant ){
 function gu_is_service_available( $restaurant, $service ){
 
   $is_service_available = false;
-  $current_day = gu_get_day_of_week();
-  $current_time = date_i18n('g:i a');
+  $current_day = date('w');
+  $current_time = date_i18n('H:i');
 
   $opening_hours = get_field('opening_hours', $restaurant->ID);
-  $opening_time = null;
-  $closing_time = null;
   $service_hours = [];
   
 
@@ -79,20 +77,37 @@ function gu_is_service_available( $restaurant, $service ){
               break;
       }
 
-      if($service_hours):
-        foreach( $service_hours as $day):
-            if($day['day'] == $current_day):
-                $opening_time = $day[$service.'_start'];
-                $closing_time = $day[$service.'_end'];
-            endif;
-        endforeach;
+  endif;
+
+  $previous_day_times = $current_day > 0 ? $service_hours[$current_day - 1] : $service_hours[6];
+  $current_day_times = $service_hours[$current_day];
+
+  if($current_day_times && $previous_day_times):
+
+    // Previous day service ends the following day
+      if( strtotime($previous_day_times[$service.'_end']) < strtotime($previous_day_times[$service.'_start']) ):
+
+        // If current time is before previous day service end then service is available.
+        if( strtotime($current_time) <= strtotime($previous_day_times[$service.'_end']) ):
+          $is_service_available = true;
+        endif;
+
       endif;
 
+      // If current day service ends after start time (ie. same day)
+      if( strtotime($current_day_times[$service.'_end']) > strtotime($current_day_times[$service.'_start'])):
+
+        $is_service_available = strtotime($current_time) >= strtotime($current_day_times[$service.'_start']) && strtotime($current_time) <= strtotime($current_day_times[$service.'_end']);
+
+      else:
+
+        $is_service_available = strtotime($current_time) >= strtotime($current_day_times[$service.'_start']);
+
+      endif;
+
+
   endif;
 
-  if($opening_time !== null && $closing_time !== null):
-      $is_service_available = strtotime($current_time) >= strtotime($opening_time) && strtotime($current_time) < strtotime($closing_time);
-  endif;
 
   return $is_service_available;
 }
