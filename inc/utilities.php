@@ -88,7 +88,7 @@ function gu_is_service_available( $restaurant, $service ){
       if( strtotime($previous_day_times[$service.'_end']) < strtotime($previous_day_times[$service.'_start']) ):
 
         // If current time is before previous day service end then service is available.
-        if( strtotime($current_time) <= strtotime($previous_day_times[$service.'_end']) ):
+        if( strtotime($current_time) < strtotime($previous_day_times[$service.'_end']) ):
           $is_service_available = true;
         endif;
 
@@ -97,7 +97,7 @@ function gu_is_service_available( $restaurant, $service ){
       // If current day service ends after start time (ie. same day)
       if( strtotime($current_day_times[$service.'_end']) > strtotime($current_day_times[$service.'_start'])):
 
-        $is_service_available = strtotime($current_time) >= strtotime($current_day_times[$service.'_start']) && strtotime($current_time) <= strtotime($current_day_times[$service.'_end']);
+        $is_service_available = strtotime($current_time) >= strtotime($current_day_times[$service.'_start']) && strtotime($current_time) < strtotime($current_day_times[$service.'_end']);
 
       else:
 
