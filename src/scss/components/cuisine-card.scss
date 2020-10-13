@@ -1,6 +1,7 @@
 .c-cuisine-card {
 
     cursor: pointer;
+    $self: &;
     
 
     &__thumbnail {
@@ -31,5 +32,11 @@
         border-radius: 0 0 4px 4px;
         border: 1px solid #eee;
         border-top: none;
+    }
+
+    &--active {
+        #{$self}__description {
+            border-color: red;
+        }
     }
 }

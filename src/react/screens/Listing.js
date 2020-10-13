@@ -10,8 +10,10 @@ export default class Listing extends Component {
     constructor(props){
         super(props);
         this.state = {
-            restaurants : [],
-            cuisineData : []
+            allRestaurants : [],
+            showRestaurants : [],
+            cuisineData : [],
+            activeCategories : []
         }
     }
 
@@ -24,7 +26,11 @@ export default class Listing extends Component {
         axios.get(apiBaseURL + restaurantEndpoint + postcodeQuery)
             .then(res => {
                 const restaurants = res.data;
-                this.setState({ restaurants : restaurants, cuisineData : this.getCuisinesFromRestaurants(restaurants) });
+                this.setState({ 
+                    allRestaurants : restaurants, 
+                    showRestaurants : restaurants,
+                    cuisineData : this.getCuisinesFromRestaurants(restaurants) 
+                });
             });
 
     }
@@ -55,13 +61,49 @@ export default class Listing extends Component {
         return count;
     }
 
+    changeActiveCategories(id) {
+
+        let currentActiveCategories = this.state.activeCategories.slice();
+
+        if( !currentActiveCategories.includes(id) ){
+            currentActiveCategories.push(id);
+        }
+
+        else {
+            const index = currentActiveCategories.indexOf(id);
+            if (index > -1) {
+                currentActiveCategories.splice(index, 1);
+            }
+        }
+
+        //console.log(currentActiveCategories);
+        this.setState({activeCategories: currentActiveCategories});
+    }
+
     render() {
 
-        const {restaurants, cuisineData} = this.state; 
-        const openRestaurants = restaurants.filter( restaurant => restaurant.is_open);
-        const closedRestaurants = restaurants.filter( restaurant => !restaurant.is_open);
+        const {allRestaurants, cuisineData, activeCategories} = this.state; 
+        let showRestaurants = allRestaurants;
+
+        if(activeCategories.length > 0){
+            showRestaurants = allRestaurants.filter(restaurant => {
+                const cuisines = restaurant.cuisines;
+                let categoryExists = false;
+                activeCategories.forEach(category => {
+                    cuisines.forEach((cuisine) => {
+                        if(cuisine.id === category){
+                            categoryExists = true;
+                        }
+                    });
+                });
+                return categoryExists;
+            });
+        }
         
-        const cuisines = cuisineData.reduce((acc, current) => {
+        const openRestaurants = showRestaurants.filter( restaurant => restaurant.is_open);
+        const closedRestaurants = showRestaurants.filter( restaurant => !restaurant.is_open);
+        
+        const uniqueCuisines = cuisineData.reduce((acc, current) => {
             const x = acc.find(item => item.id === current.id);
             if (!x) {
               return acc.concat([current]);
@@ -85,7 +127,7 @@ export default class Listing extends Component {
                                 <h3>Cuisines</h3>
                             </div>
                             <div className="grid-x grid-margin-x">
-                                { cuisines.map( cuisine => <CuisineCard key={cuisine.id} count={this.getCuisineCount(cuisine.id)} cuisine={cuisine}/>)}
+                                { uniqueCuisines.map( cuisine => <CuisineCard isActive={activeCategories.includes(cuisine.id)} clickHandler={(id)=> this.changeActiveCategories(id)} key={cuisine.id} count={this.getCuisineCount(cuisine.id)} cuisine={cuisine}/>)}
                             </div>
                         </div>
                     </div>
