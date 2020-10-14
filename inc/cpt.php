@@ -167,6 +167,6 @@ function gu_register_post_types() {
       
     register_post_type( 'restaurant', $restaurant_args );
     register_post_type( 'review', $review_args );
-    register_post_type( 'location', $loc_args );
+    // register_post_type( 'location', $loc_args );
 }
 add_action( 'init', 'gu_register_post_types' );
