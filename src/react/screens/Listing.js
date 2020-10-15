@@ -125,6 +125,7 @@ export default class Listing extends Component {
                         <div class="o-listings__cuisine-list">
                             <div className="o-listings__cuisine-list__header">
                                 <h3>Cuisines</h3>
+                                <span onClick={()=> this.setState({activeCategories : []})}>Reset</span>
                             </div>
                             <div className="grid-x grid-margin-x">
                                 { uniqueCuisines.map( cuisine => <CuisineCard isActive={activeCategories.includes(cuisine.id)} clickHandler={(id)=> this.changeActiveCategories(id)} key={cuisine.id} count={this.getCuisineCount(cuisine.id)} cuisine={cuisine}/>)}
