@@ -3,4 +3,9 @@
     background-color: green;
     background: #fff;
     box-shadow: 0 2px 12px 0 rgba(0,0,0,0.1);
+
+    &__logo {
+        padding-top: .3125rem;
+        padding-bottom: .3125rem;
+    }
 }

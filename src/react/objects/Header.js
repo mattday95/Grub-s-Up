@@ -1,5 +1,4 @@
 import React from 'react';
-import logo from '../../images/logo.svg';
 
 export default function Header() {
 
@@ -9,7 +8,7 @@ export default function Header() {
                 <div class="grid-x">
                     <div className="cell o-header__logo">
                         <a href="http://google.com">
-                            <img src={logo}/>
+                            <img src={'/wp-content/themes/grubs-up/src/images/logo.svg'}/>
                         </a>
                     </div>
                 </div>

@@ -53,10 +53,6 @@ module.exports = {
                 use: [
                 'file-loader',
                 ],
-            },
-            {
-                test: /\.svg$/,
-                loader: 'svg-inline-loader'
             }
         ]
     },
