@@ -1,4 +1,19 @@
 .c-search {
-    margin-bottom: 10px;
+    display: inline-flex;
+    align-items: center;
+    padding: .5rem;
     background-color: #FFF;
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+
+    input {
+        width: 100%;
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.5;
+        color: #495057;
+        border: none;
+        outline: none;
+        cursor: pointer;
+    }
 }

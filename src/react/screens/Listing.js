@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import axios from 'axios';
+import {BsSearch} from 'react-icons/bs';
 
 import Header from '../objects/Header';
 import CuisineCard from '../components/CuisineCard';
@@ -134,6 +135,12 @@ export default class Listing extends Component {
                     </div>
 
                     <div className="cell small-12 medium-8">
+                        <div className="o-restaurant-filter">
+                            <div class="c-search">
+                                <input type="text" placeholder="Search Takeaways"/>
+                                <BsSearch/>
+                            </div>
+                        </div>
                         <div className="restaurant-list-container"> 
                             <div className="o-listings__restaurant-list__header">
                                 <h3>Currently open ({openRestaurants.length})</h3>
