@@ -14,6 +14,7 @@ export default class Listing extends Component {
             allRestaurants : [],
             showRestaurants : [],
             cuisineData : [],
+            restaurantSearch : null,
             activeCategories : []
         }
     }
@@ -50,7 +51,6 @@ export default class Listing extends Component {
     getCuisineCount(id) {
 
         const cuisineData = this.state.cuisineData;
-        console.log(cuisineData);
         let count = 0;
 
         cuisineData.forEach( entry => {
@@ -83,7 +83,8 @@ export default class Listing extends Component {
 
     render() {
 
-        const {allRestaurants, cuisineData, activeCategories} = this.state; 
+        console.log(this.state.restaurantSearch);
+        const {allRestaurants, cuisineData, activeCategories, restaurantSearch} = this.state; 
         let showRestaurants = allRestaurants;
 
         if(activeCategories.length > 0){
@@ -99,6 +100,10 @@ export default class Listing extends Component {
                 });
                 return categoryExists;
             });
+        }
+
+        if(restaurantSearch !== null){
+            showRestaurants = showRestaurants.filter(restaurant => restaurant.name.toLowerCase().includes(restaurantSearch.toLowerCase()));
         }
         
         const openRestaurants = showRestaurants.filter( restaurant => restaurant.is_open);
@@ -137,7 +142,7 @@ export default class Listing extends Component {
                     <div className="cell small-12 medium-8">
                         <div className="o-restaurant-filter">
                             <div class="c-search">
-                                <input type="text" placeholder="Search Takeaways"/>
+                                <input onChange={(e) => this.setState({ restaurantSearch : e.target.value})} type="text" placeholder="Search Takeaways"/>
                                 <BsSearch/>
                             </div>
                         </div>
