@@ -71,7 +71,10 @@ function gu_get_restaurants( WP_REST_Request $request ) {
 
         foreach ( $filtered_restaurants as $restaurant ):
 
-        $discount = false;
+        $discount = array(
+            'rate' => 0,
+            'minimum_spend' => false
+        );
         $cuisine_data = [];
         $cuisines = get_the_terms($restaurant->ID, 'cuisines');
         $times = get_field('times', $restaurant->ID);
@@ -83,12 +86,8 @@ function gu_get_restaurants( WP_REST_Request $request ) {
 
                 $discount_rate = get_field('discount_rate', $restaurant->ID);
                 $minimum_spend = get_field('add_minimum_spend', $restaurant->ID) && get_field('minimum_spend', $restaurant->ID) ? get_field('minimum_spend', $restaurant->ID) : false;
-
-                
-                $discount = array(
-                    'rate' => $discount_rate,
-                    'minimum_spend'=> $minimum_spend
-                );
+                $discount['rate'] = $discount_rate;
+                $discount['minimum_spend'] = $minimum_spend;
 
             endif;
 

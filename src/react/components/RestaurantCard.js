@@ -14,13 +14,13 @@ export default function RestaurantCard(props) {
         <li className="c-restaurant-card">
             <a href={props.restaurant.link}>
                 <div className="c-restaurant-card__thumbnail">
-                    <img src={props.restaurant.logo}/>
+                    <img src={props.restaurant.logo ? props.restaurant.logo : '/wp-content/themes/grubs-up/src/images/placeholder.png'}/>
                 </div>
                 <div className="c-restaurant-card__info">
                     <div className="c-restaurant-card__info__header">
                         <h2>{props.restaurant.name || <Skeleton count={5}/>}</h2>
                         { 
-                            props.restaurant.discount !== false &&
+                            props.restaurant.discount.rate > 0 &&
                         
                             <div className="c-discount-tag">
                                 <span className="c-discount-tag__tag">{props.restaurant.discount.rate}% off</span>

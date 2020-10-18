@@ -1,10 +1,24 @@
 .o-restaurant-filter {
+    display: flex;
+    align-items: center;
     padding: .5rem 1rem;
     margin-bottom: .7rem;
     background-color: #FFF;
 
-    .c-search {
+    &__search {
+        width: 70%;
+    }
 
-        width: 80%;
+    &__sort {
+        display: flex;
+        width: 30%;
+
+        span {
+            margin-right: 30px;
+            margin-left: auto;
+            font-size: 14px;
+            font-weight: lighter;
+            color: #888;
+        }
     }
 }
