@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 import StarRatings from 'react-star-ratings';
 import { BiShoppingBag } from 'react-icons/bi';
 import { MdLocationOn } from 'react-icons/md';
@@ -12,7 +13,7 @@ export default function RestaurantCard(props) {
     return (
 
         <li className="c-restaurant-card">
-            <a href={props.restaurant.link}>
+            <Link to={{pathname : "/restaurant/" + props.restaurant.slug, state: props.restaurant}}>
                 <div className="c-restaurant-card__thumbnail">
                     <img src={props.restaurant.logo ? props.restaurant.logo : '/wp-content/themes/grubs-up/src/images/placeholder.png'}/>
                 </div>
@@ -68,7 +69,7 @@ export default function RestaurantCard(props) {
                     <span>{`${props.restaurant.reviews.num_reviews} ${props.restaurant.reviews.num_reviews > 1 || props.restaurant.reviews.num_reviews === 0 ? 'Reviews' : 'Review'}`}</span>
                     <button className="c-button c-button--order">Order Now</button>
                 </div>
-            </a>
+            </Link>
         </li>
 
     )

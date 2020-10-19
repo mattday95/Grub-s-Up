@@ -17,6 +17,8 @@
         }
     }
     &__cuisine-list {
+        position: sticky;
+        top: 10px;
         padding: 10px;
         background-color: #FFF;
 

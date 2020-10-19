@@ -12,6 +12,7 @@ import Header from './objects/Header';
 
 import Listing from './screens/Listing';
 import Home from './screens/Home';
+import Restaurant from './screens/Restaurant';
 
 export default class App extends Component {
 
@@ -22,6 +23,7 @@ export default class App extends Component {
                 <Switch>
                     <Route path="/" exact component={Home}/>
                     <Route path="/list/:postcode/" component={Listing}/>
+                    <Route path="/restaurant/:restaurant/" component={Restaurant}/>
                     <Route path="/" render={() => <div>404. Not found.</div>}/>
                 </Switch>
             </BrowserRouter>

@@ -106,7 +106,8 @@ function gu_get_restaurants( WP_REST_Request $request ) {
             endif;
 
             $data[] = array(
-                'name' => get_the_title($restaurant->ID),
+                'name' => $restaurant->post_title,
+                'slug'=> $restaurant->post_name,
                 'id' => $restaurant->ID,
                 'link' => get_the_permalink($restaurant->ID),
                 'logo' => get_field('restaurant_logo', $restaurant->ID),
