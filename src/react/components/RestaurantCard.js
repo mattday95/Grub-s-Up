@@ -5,6 +5,7 @@ import { BiShoppingBag } from 'react-icons/bi';
 import { MdLocationOn } from 'react-icons/md';
 import { RiEBikeFill } from 'react-icons/ri';
 import Skeleton from 'react-loading-skeleton';
+import DiscountTag from './DiscountTag';
 
 export default function RestaurantCard(props) {
 
@@ -22,15 +23,7 @@ export default function RestaurantCard(props) {
                         <h2>{props.restaurant.name || <Skeleton count={5}/>}</h2>
                         { 
                             props.restaurant.discount.rate > 0 &&
-                        
-                            <div className="c-discount-tag">
-                                <span className="c-discount-tag__tag">{props.restaurant.discount.rate}% off</span>
-                                {
-                                    props.restaurant.discount.minimum_spend !== false &&
-                                    <span className="c-discount-tag__description">Min: £{props.restaurant.discount.minimum_spend}</span>
-                                }
-                            </div>
-                
+                            <DiscountTag style="stacked" minimum_spend={props.restaurant.discount.minimum_spend} rate={props.restaurant.discount.rate}/>
                         }
                     </div>
                     <ul className="c-restaurant-card__info__cuisines">

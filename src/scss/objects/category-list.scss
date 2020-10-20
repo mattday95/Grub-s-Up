@@ -1,0 +1,32 @@
+.o-category-list {
+    padding: 1rem;
+    background-color: white;
+    position: sticky;
+    top: 0;
+
+    h3 {
+        font-size: 14px;
+        color: #d82927;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+    }
+
+    &__list {
+        margin: 10px 0;
+        list-style-type: none;
+
+        li {
+
+        margin-bottom: 20px;
+
+            a {
+                font-size: 13px;
+                color: #555;
+                letter-spacing: 0;
+                text-align: left;
+                font-weight: 300;
+                padding: .4rem 0;
+            }
+        }
+    }
+}

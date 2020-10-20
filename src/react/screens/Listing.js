@@ -258,7 +258,7 @@ export default class Listing extends Component {
 
                     <div className="cell small-12 medium-9">
                         <div className="o-restaurant-filter">
-                            <div class="c-search o-restaurant-filter__search">
+                            <div className="c-search o-restaurant-filter__search">
                                 <input onChange={(e) => this.setState({ restaurantSearch : e.target.value})} type="text" placeholder="Search Takeaways"/>
                                 <BsSearch size='14px'/>
                             </div>
