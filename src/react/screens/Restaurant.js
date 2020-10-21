@@ -60,7 +60,21 @@ export default class Restaurant extends Component {
                                     <BsSearch size='14px'/>
                                 </div>
                             </div>
-                            <div style={{height: '100vh'}}></div>
+                            <div className="o-product-group">
+                                <div className="o-product-group__header">
+                                    <span>Best Selling</span>
+                                </div>
+                            </div> 
+                            <div className="o-product-group">
+                                <div className="o-product-group__header">
+                                    <span>Pizzas</span>
+                                </div>
+                            </div>  
+                            <div className="o-product-group">
+                                <div className="o-product-group__header">
+                                    <span>Calzone</span>
+                                </div>
+                            </div>   
                         </div>
                         <div className="cell medium-4 o-basket">
                             basket
