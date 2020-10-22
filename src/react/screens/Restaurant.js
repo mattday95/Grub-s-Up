@@ -60,19 +60,93 @@ export default class Restaurant extends Component {
                                     <BsSearch size='14px'/>
                                 </div>
                             </div>
-                            <div className="o-product-group">
-                                <div className="o-product-group__header">
+                            <div className="c-product-group">
+                                <div className="c-product-group__header">
                                     <span>Best Selling</span>
                                 </div>
+                                <div className="c-product-group__sub-cat">
+                                    <div className="c-product-group__sub-cat__header">
+                                        <span>Margherita Pizza</span>
+                                        <p>Cheese and tomato</p>
+                                    </div>
+                                    <div className="c-product-list-item">
+                                        <p>Hot Stuff Special Kebab on Naan</p>
+                                    </div>
+                                    <div className="c-product-list-item">
+                                        <p>Hot Stuff Special Kebab on Naan</p>
+                                    </div>
+                                    <div className="c-product-list-item">
+                                        <p>Hot Stuff Special Kebab on Naan</p>
+                                    </div>
+                                </div>
+                                <div className="c-product-group__sub-cat">
+                                    <div className="c-product-group__sub-cat__header">
+                                        <span>Margherita Pizza</span>
+                                        <p>Cheese and tomato</p>
+                                    </div>
+                                    <div className="c-product-list-item">
+                                        <p>Hot Stuff Special Kebab on Naan</p>
+                                    </div>
+                                    <div className="c-product-list-item">
+                                        <p>Hot Stuff Special Kebab on Naan</p>
+                                    </div>
+                                    <div className="c-product-list-item">
+                                        <p>Hot Stuff Special Kebab on Naan</p>
+                                    </div>
+                                </div>
                             </div> 
-                            <div className="o-product-group">
-                                <div className="o-product-group__header">
+                            <div className="c-product-group">
+                                <div className="c-product-group__header">
                                     <span>Pizzas</span>
                                 </div>
+                                <div className="c-product-group__sub-cat">
+                                    <div className="c-product-list-item">
+                                        <p>Hot Stuff Special Kebab on Naan</p>
+                                    </div>
+                                    <div className="c-product-list-item">
+                                        <p>Hot Stuff Special Kebab on Naan</p>
+                                    </div>
+                                    <div className="c-product-list-item">
+                                        <p>Hot Stuff Special Kebab on Naan</p>
+                                    </div>
+                                </div>
                             </div>  
-                            <div className="o-product-group">
-                                <div className="o-product-group__header">
+                            <div className="c-product-group">
+                                <div className="c-product-group__header">
                                     <span>Calzone</span>
+                                </div>
+                                <div className="c-product-group__sub-cat">
+                                    <div className="c-product-list-item">
+                                        <p>Hot Stuff Special Kebab on Naan</p>
+                                    </div>
+                                    <div className="c-product-list-item">
+                                        <p>Hot Stuff Special Kebab on Naan</p>
+                                    </div>
+                                    <div className="c-product-list-item">
+                                        <p>Hot Stuff Special Kebab on Naan</p>
+                                    </div>
+                                </div>
+                                <div className="c-product-group__sub-cat">
+                                    <div className="c-product-list-item">
+                                        <p>Hot Stuff Special Kebab on Naan</p>
+                                    </div>
+                                    <div className="c-product-list-item">
+                                        <p>Hot Stuff Special Kebab on Naan</p>
+                                    </div>
+                                    <div className="c-product-list-item">
+                                        <p>Hot Stuff Special Kebab on Naan</p>
+                                    </div>
+                                </div>
+                                <div className="c-product-group__sub-cat">
+                                    <div className="c-product-list-item">
+                                        <p>Hot Stuff Special Kebab on Naan</p>
+                                    </div>
+                                    <div className="c-product-list-item">
+                                        <p>Hot Stuff Special Kebab on Naan</p>
+                                    </div>
+                                    <div className="c-product-list-item">
+                                        <p>Hot Stuff Special Kebab on Naan</p>
+                                    </div>
                                 </div>
                             </div>   
                         </div>
