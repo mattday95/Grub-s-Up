@@ -21,6 +21,8 @@ a {
     text-decoration: none;
 }
 
+@import 'utilities/align-x';
+
 
 @import 'objects/header';
 @import 'objects/listings';
@@ -39,3 +41,4 @@ a {
 @import 'components/button';
 @import 'components/product-group';
 @import 'components/product-list-item';
+@import 'components/add-to-cart';

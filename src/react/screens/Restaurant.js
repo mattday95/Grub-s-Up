@@ -37,7 +37,7 @@ export default class Restaurant extends Component {
                     </div>
                 </div>
                 <div className="grid-container">
-                    <div className="grid-x grid-margin-x">
+                    <div className="grid-x grid-margin-x u-align-x--top">
                         <div className="cell medium-3 o-category-list">
                             <h3>Items</h3>
                             <ul className="o-category-list__list">
@@ -70,13 +70,42 @@ export default class Restaurant extends Component {
                                         <p>Cheese and tomato</p>
                                     </div>
                                     <div className="c-product-list-item">
-                                        <p>Hot Stuff Special Kebab on Naan</p>
+                                        <div className="c-product-list-item__details">
+                                            <h4 className="product-title">Product Title</h4>
+                                            <p className="product-description">4pcs strips, 5pcs bites, 15pcs popcorn chicken, 1 fries, coleslaw, garlic mayo and pepsi can</p>
+                                        </div>
+                                        <span className="c-product-list-item__price">£7.50</span>
+                                        <div className="c-product-list-item__add-to-cart">
+                                            <div className="c-add-to-cart">
+                                                <span>Add</span>
+                                                <span>+</span>
+                                            </div>
+                                        </div>
                                     </div>
                                     <div className="c-product-list-item">
-                                        <p>Hot Stuff Special Kebab on Naan</p>
+                                        <div className="c-product-list-item__details">
+                                            <h4 className="product-title">Product Title</h4>
+                                            <p className="product-description">4pcs strips, 5pcs bites, 15pcs popcorn chicken, 1 fries, coleslaw, garlic mayo and pepsi can</p>
+                                        </div>
+                                        <span className="c-product-list-item__price">£7.50</span>
+                                        <div className="c-product-list-item__add-to-cart">
+                                            <div className="c-add-to-cart">
+                                                <span>Add</span>
+                                                <span>+</span>
+                                            </div>
+                                        </div>
                                     </div>
                                     <div className="c-product-list-item">
-                                        <p>Hot Stuff Special Kebab on Naan</p>
+                                        <div className="c-product-list-item__details">
+                                            <h4 className="product-title">Product Title</h4>
+                                        </div>
+                                        <span className="c-product-list-item__price">£7.50</span>
+                                        <div className="c-product-list-item__add-to-cart">
+                                            <div className="c-add-to-cart">
+                                                <span>Add</span>
+                                                <span>+</span>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                                 <div className="c-product-group__sub-cat">
@@ -151,7 +180,7 @@ export default class Restaurant extends Component {
                             </div>   
                         </div>
                         <div className="cell medium-4 o-basket">
-                            basket
+                            <h3>Basket</h3>
                         </div>
                     </div>
                 </div>
