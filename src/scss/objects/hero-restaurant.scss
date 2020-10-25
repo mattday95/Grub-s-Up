@@ -1,15 +1,21 @@
 .o-hero-restaurant {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-bottom: 40px;
     padding: 1rem .25rem;
     position: relative;
 
     .grid-container {
-        max-width: 960px;
+        position: relative;
+        max-width: 1075px;
+        z-index: 1;
     }
 
     &__logo {
         position: relative;
-        height: 78px;
-        width: 78px;
+        height: 90px;
+        width: 90px;
         border-radius: 4px;
         overflow: hidden;
         background-color: #FFF;
@@ -22,5 +28,81 @@
             height: 100%;
             object-fit: contain;
         }
+    }
+
+    &__meta {
+
+        h1 {
+            margin-right: 20px;
+            font-size: 20px;
+            font-weight: normal;
+            color: #fff;
+            text-align: left;
+        }
+
+        &__list {
+
+        margin: .5rem 0;
+
+            li {
+
+            padding: 0 17px;
+            text-align: left;
+
+                &:first-of-type {
+                    padding-left: 0;
+                }
+
+                &:not(:last-of-type){
+                    border-right: 1px solid #eee;
+                }
+
+                .cell {
+                    display: flex;
+                    align-items: center;
+
+                    svg {
+                        min-width: 21px;
+                        height: 21px;
+                        margin-right: 5px;
+                        fill: #d82927;
+                    }
+
+                    span {
+
+                        &.meta-value {
+                            font-size: 12px;
+                            color: #fff;
+                            line-height: 12px;
+                            font-weight: 400;
+                            vertical-align: middle;
+                        }
+
+                        &.meta-description {
+                            font-size: 11px;
+                            color: #ccc;
+                            line-height: 12px;
+                            font-weight: 300;
+                            text-align: left;
+                            margin-top: 5px;
+                        }
+                    }
+
+                    &:first-of-type {
+                        min-height: 21px;
+                    }
+                }
+            }
+        }
+    }
+
+    &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5));
     }
 }

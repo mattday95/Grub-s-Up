@@ -1,4 +1,5 @@
 .c-discount-tag {
+    $self: &;
     display: flex;
     flex-direction: column;
     align-items: flex-end;
@@ -19,5 +20,13 @@
     &__description {
         margin-top: 2px;
         color: #888;
+    }
+
+    &--inline {
+        flex-direction: row;
+        align-items: center;
+        #{$self}__tag {
+            margin-right: 10px;
+        }
     }
 }

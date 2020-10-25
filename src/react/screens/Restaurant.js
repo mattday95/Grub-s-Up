@@ -1,5 +1,11 @@
 import React, {Component} from 'react';
+import {AiFillStar} from 'react-icons/ai';
 import {BsSearch} from 'react-icons/bs';
+import { MdLocationOn } from 'react-icons/md';
+import { RiEBikeFill } from 'react-icons/ri';
+import { BiShoppingBag } from 'react-icons/bi';
+
+import DiscountTag from '../components/DiscountTag';
 
 import Header from '../objects/Header';
 
@@ -7,6 +13,11 @@ export default class Restaurant extends Component {
 
     constructor(props){
         super(props);
+    }
+
+    componentDidMount() {
+
+        console.log(this.props.location);
     }
 
     render() {
@@ -17,7 +28,7 @@ export default class Restaurant extends Component {
         return(
             <div>
                 <Header/>
-                <div className="o-hero-restaurant">
+                <div style={{backgroundImage: `url(${restaurant.hero_background})`}} className="o-hero-restaurant">
                     <div className="grid-container">
                         <div className="grid-x">
                             <div className="medium-2">
@@ -25,12 +36,66 @@ export default class Restaurant extends Component {
                                     <img src={restaurant.logo}/>
                                 </div>
                             </div>
-                            <div className="medium-7">
-                                <div className="o-hero-restaurant__meta">
-
+                            <div className="medium-8">
+                                <div className="o-hero-restaurant__meta grid-x">
+                                    <div className="cell grid-x u-align-x--center">
+                                        <h1>{restaurant.name}</h1>
+                                        {
+                                            restaurant.discount.rate > 0 &&
+                                            <DiscountTag style="inline" minimum_spend={restaurant.discount.minimum_spend} rate={restaurant.discount.rate}/>
+                                        }
+                                    </div>
+                                    <div className="cell">
+                                        <ul className="grid-x o-hero-restaurant__meta__list">
+                                            <li className="grid-y cell medium-2">
+                                                <div className="cell">
+                                                    <AiFillStar/>
+                                                    <span className="meta-value">{restaurant.reviews.average_rating}</span>
+                                                </div>
+                                                <div className="cell">
+                                                    <span className="meta-description">{`${restaurant.reviews.num_reviews} ${restaurant.reviews.num_reviews > 1 || restaurant.reviews.num_reviews === 0 ? 'Reviews' : 'Review'}`}</span>
+                                                </div>
+                                            </li>
+                                            <li className="grid-y cell medium-2">
+                                                <div className="cell">
+                                                    <MdLocationOn/>
+                                                    <span className="meta-value">{restaurant.distance} miles</span>
+                                                </div>
+                                                <div className="cell">
+                                                    <span className="meta-description">Distance From</span>
+                                                </div>
+                                            </li>
+                                            <li className="grid-y cell medium-2">
+                                                <div className="cell">
+                                                    <BiShoppingBag/>
+                                                    <span className="meta-value">{restaurant.times.collection} mins</span>
+                                                </div>
+                                                <div className="cell">
+                                                    <span className="meta-description">Collection Time</span>
+                                                </div>
+                                            </li>
+                                            <li className="grid-y cell medium-2">
+                                                <div className="cell">
+                                                    <RiEBikeFill/>
+                                                    <span className="meta-value">{restaurant.times.delivery} mins</span>
+                                                </div>
+                                                <div className="cell">
+                                                    <span className="meta-description">Delivery Time</span>
+                                                </div>
+                                            </li>
+                                            <li className="grid-y cell medium-2">
+                                                <div className="cell">
+                                                    <span className="meta-value">Delivery: £1.00</span>
+                                                </div>
+                                                <div className="cell">
+                                                    <span className="meta-description">Min: £10.00</span>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
-                            <div className="medium-3">
+                            <div className="medium-2">
 
                             </div>
                         </div>

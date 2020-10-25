@@ -14,7 +14,7 @@ export default function RestaurantCard(props) {
     return (
 
         <li className="c-restaurant-card">
-            <Link to={{pathname : "/restaurant/" + props.restaurant.slug, state: props.restaurant}}>
+            <Link to={{pathname : `/restaurant/${props.restaurant.slug}`, state: props.restaurant}}>
                 <div className="c-restaurant-card__thumbnail">
                     <img src={props.restaurant.logo ? props.restaurant.logo : '/wp-content/themes/grubs-up/src/images/placeholder.png'}/>
                 </div>

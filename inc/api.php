@@ -111,6 +111,7 @@ function gu_get_restaurants( WP_REST_Request $request ) {
                 'id' => $restaurant->ID,
                 'link' => get_the_permalink($restaurant->ID),
                 'logo' => get_field('restaurant_logo', $restaurant->ID),
+                'hero_background' => get_field('menu_page_hero_background', $restaurant->ID),
                 'location' => $restaurant_location,
                 'distance' => number_format((float)$distance, 2, '.', ''),
                 'discount' => $discount,
