@@ -77,10 +77,15 @@ function gu_get_restaurants( WP_REST_Request $request ) {
         );
         $cuisine_data = [];
         $cuisines = get_the_terms($restaurant->ID, 'cuisines');
-        $times = get_field('times', $restaurant->ID);
+        $restaurant_data = get_field('data', $restaurant->ID);
+        $delivery_data = $restaurant_data['delivery'];
+        $times_data = $restaurant_data['times'];
         $restaurant_location = get_field('restaurant_location', $restaurant->ID);
         $reviews = gu_get_reviews_by_restaurant($restaurant);
         $distance = gu_calculate_distance($customer_location['lat'], $customer_location['lng'], $restaurant_location['lat'], $restaurant_location['lng'], "M");
+        $collection_available = gu_is_service_available($restaurant, 'collection');
+        $delivery_available = gu_is_service_available($restaurant, 'delivery');
+        $preorder_available = gu_is_preorder_available($restaurant);
 
             if( get_field('apply_discount', $restaurant->ID) && get_field('discount_rate', $restaurant->ID) ):
 
@@ -121,12 +126,16 @@ function gu_get_restaurants( WP_REST_Request $request ) {
                     'average_rating' => count($reviews) > 0 ? gu_get_average_rating($reviews) : 0
                 ),
                 'times' => array(
-                    'collection' => $times['average_collection_time'], 
-                    'delivery' => $times['average_delivery_time'] 
+                    'collection' => $times_data['average_collection_time'], 
+                    'delivery' => $times_data['average_delivery_time'] 
                 ),
-                'open_for_collection' => gu_is_service_available($restaurant, 'collection'),
-                'open_for_delivery' => gu_is_service_available($restaurant, 'delivery'),
-                'is_open' => gu_is_restaurant_open($restaurant)
+                'delivery' => array(
+                    'charge' => number_format((float)$delivery_data['charge'], 2, '.', ''),
+                    'minimum_spend' => number_format((float)$delivery_data['minimum_spend'], 2, '.', '')
+                ),
+                'collection_available' => $collection_available,
+                'delivery_available' => $delivery_available,
+                'preorder_available' => !$collection_available && !$delivery_available && $preorder_available
             );
     
         endforeach;

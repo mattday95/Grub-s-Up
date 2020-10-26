@@ -231,8 +231,9 @@ export default class Listing extends Component {
             visibleRestaurants = visibleRestaurants.filter(restaurant => restaurant.name.toLowerCase().includes(restaurantSearch.toLowerCase()));
         }
         
-        const openRestaurants = visibleRestaurants.filter( restaurant => restaurant.is_open);
-        const closedRestaurants = visibleRestaurants.filter( restaurant => !restaurant.is_open);
+        const openRestaurants = visibleRestaurants.filter( restaurant => restaurant.delivery_available || restaurant.collection_available );
+        const preorderRestaurants = visibleRestaurants.filter( restaurant => restaurant.preorder_available );
+        const closedRestaurants = visibleRestaurants.filter( restaurant => !restaurant.delivery_available && !restaurant.collection_available && !restaurant.preorder_available);
         
 
         return (
@@ -273,18 +274,29 @@ export default class Listing extends Component {
                                 </select>
                             </div>
                         </div>
+
                         <div className="restaurant-list-container"> 
                             <div className="o-listings__restaurant-list__header">
                                 <h3>Currently open ({openRestaurants.length})</h3>
                             </div>
-                            <ul className="o-listings__restaurant-list__restaurants">{openRestaurants.map( restaurant => <RestaurantCard key={restaurant.id} restaurant={restaurant}/>) }</ul>
+                            <ul className="o-listings__restaurant-list__restaurants">{openRestaurants.map( restaurant => <RestaurantCard cta="order" key={restaurant.id} restaurant={restaurant}/>) }</ul>
                         </div>
+
+                        {
+                            preorderRestaurants.length > 0 &&
+                            <div className="restaurant-list-container"> 
+                                <div className="o-listings__restaurant-list__header o-listings__restaurant-list__header--closed">
+                                    <h3>Pre-order ({preorderRestaurants.length})</h3>
+                                </div>
+                                <ul className="o-listings__restaurant-list__restaurants">{preorderRestaurants.map( restaurant => <RestaurantCard cta="preorder" key={restaurant.id} restaurant={restaurant}/>) }</ul>
+                            </div>
+                        }
 
                         <div className="restaurant-list-container"> 
                             <div className="o-listings__restaurant-list__header o-listings__restaurant-list__header--closed">
                                 <h3>Currently closed ({closedRestaurants.length})</h3>
                             </div>
-                            <ul className="o-listings__restaurant-list__restaurants">{closedRestaurants.map( restaurant => <RestaurantCard key={restaurant.id} restaurant={restaurant}/>) }</ul>
+                            <ul className="o-listings__restaurant-list__restaurants">{closedRestaurants.map( restaurant => <RestaurantCard cta="closed" key={restaurant.id} restaurant={restaurant}/>) }</ul>
                         </div>
                     </div>
                 </div>

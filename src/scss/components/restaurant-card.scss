@@ -81,6 +81,19 @@
                     font-size: 13px;
                     color: #555;
                     line-height: 12px;
+
+                    &.delivery-charge {
+                        margin-right: 2px;
+
+                        &.delivery-charge-free {
+                            color: #f47925;
+                        }
+                    }
+
+                    &.minimum-spend {
+                        font-size: 10px;
+                        color: #888;
+                    }
                 }
             }
         }

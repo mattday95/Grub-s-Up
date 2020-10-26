@@ -30,4 +30,19 @@
         font-size: .7rem;
         font-weight: 500;
     }
+
+    &--preorder {
+        background: #42bedb;
+        border-color: #42bedb;
+        font-size: .7rem;
+        color: #fff;
+    }
+
+    &--closed {
+        border-color: #eee;
+        font-size: .7rem;
+        color: #d82927;
+        letter-spacing: 2px;
+        background: none;
+    }
 }

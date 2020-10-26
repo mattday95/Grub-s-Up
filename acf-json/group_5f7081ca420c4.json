@@ -11,7 +11,7 @@
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "",
+                "width": "40",
                 "class": "",
                 "id": ""
             },
@@ -30,7 +30,7 @@
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "",
+                "width": "60",
                 "class": "",
                 "id": ""
             },
@@ -84,7 +84,7 @@
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
-                        "width": "",
+                        "width": "50",
                         "class": "",
                         "id": ""
                     },
@@ -95,186 +95,26 @@
                     "ui_off_text": ""
                 },
                 {
-                    "key": "field_5f7b790f9cc3e",
+                    "key": "field_5f96cdadb8d1f",
                     "label": "Days",
                     "name": "days",
                     "type": "repeater",
                     "instructions": "",
                     "required": 0,
-                    "conditional_logic": [
-                        [
-                            {
-                                "field": "field_5f7b7a18b851a",
-                                "operator": "==",
-                                "value": "1"
-                            }
-                        ]
-                    ],
+                    "conditional_logic": 0,
                     "wrapper": {
                         "width": "",
                         "class": "",
                         "id": ""
                     },
                     "collapsed": "",
-                    "min": 0,
+                    "min": 7,
                     "max": 7,
                     "layout": "table",
                     "button_label": "",
                     "sub_fields": [
                         {
-                            "key": "field_5f7b79309cc3f",
-                            "label": "Day",
-                            "name": "day",
-                            "type": "select",
-                            "instructions": "",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "choices": {
-                                "monday": "Monday",
-                                "tuesday": "Tuesday",
-                                "wednesday": "Wednesday",
-                                "thursday": "Thursday",
-                                "friday": "Friday",
-                                "saturday": "Saturday",
-                                "sunday": "Sunday"
-                            },
-                            "default_value": false,
-                            "allow_null": 0,
-                            "multiple": 0,
-                            "ui": 0,
-                            "return_format": "value",
-                            "ajax": 0,
-                            "placeholder": ""
-                        },
-                        {
-                            "key": "field_5f7b79789cc40",
-                            "label": "Opening Time",
-                            "name": "opening_time",
-                            "type": "time_picker",
-                            "instructions": "",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "display_format": "g:i a",
-                            "return_format": "g:i a"
-                        },
-                        {
-                            "key": "field_5f7b79929cc41",
-                            "label": "Closing Time",
-                            "name": "closing_time",
-                            "type": "time_picker",
-                            "instructions": "",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "display_format": "g:i a",
-                            "return_format": "g:i a"
-                        }
-                    ]
-                },
-                {
-                    "key": "field_5f81e587b77b7",
-                    "label": "Collection Hours",
-                    "name": "collection_hours",
-                    "type": "repeater",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": [
-                        [
-                            {
-                                "field": "field_5f7b7a18b851a",
-                                "operator": "==",
-                                "value": "1"
-                            }
-                        ]
-                    ],
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "collapsed": "",
-                    "min": 0,
-                    "max": 7,
-                    "layout": "table",
-                    "button_label": "Add Day",
-                    "sub_fields": [
-                        {
-                            "key": "field_5f81e587b77b9",
-                            "label": "Collection Start",
-                            "name": "collection_start",
-                            "type": "time_picker",
-                            "instructions": "",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "display_format": "H:i",
-                            "return_format": "H:i"
-                        },
-                        {
-                            "key": "field_5f81e587b77ba",
-                            "label": "Collection End",
-                            "name": "collection_end",
-                            "type": "time_picker",
-                            "instructions": "",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "display_format": "H:i",
-                            "return_format": "H:i"
-                        }
-                    ]
-                },
-                {
-                    "key": "field_5f836e4d5307a",
-                    "label": "Delivery Hours",
-                    "name": "delivery_hours",
-                    "type": "repeater",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": [
-                        [
-                            {
-                                "field": "field_5f7b7a18b851a",
-                                "operator": "==",
-                                "value": "1"
-                            }
-                        ]
-                    ],
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "collapsed": "",
-                    "min": 0,
-                    "max": 7,
-                    "layout": "table",
-                    "button_label": "Add Day",
-                    "sub_fields": [
-                        {
-                            "key": "field_5f836e4d5307b",
+                            "key": "field_5f96cdfeb8d20",
                             "label": "Delivery Start",
                             "name": "delivery_start",
                             "type": "time_picker",
@@ -286,11 +126,27 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "display_format": "H:i",
+                            "display_format": "g:i a",
                             "return_format": "H:i"
                         },
                         {
-                            "key": "field_5f836e4d5307c",
+                            "key": "field_5f96ce4eb8d22",
+                            "label": "Collection Start",
+                            "name": "collection_start",
+                            "type": "time_picker",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "display_format": "g:i a",
+                            "return_format": "H:i"
+                        },
+                        {
+                            "key": "field_5f96ce27b8d21",
                             "label": "Delivery End",
                             "name": "delivery_end",
                             "type": "time_picker",
@@ -302,17 +158,90 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "display_format": "H:i",
+                            "display_format": "g:i a",
                             "return_format": "H:i"
+                        },
+                        {
+                            "key": "field_5f96ce61b8d23",
+                            "label": "Collection End",
+                            "name": "collection_end",
+                            "type": "time_picker",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "display_format": "g:i a",
+                            "return_format": "H:i"
+                        },
+                        {
+                            "key": "field_5f96ce81b8d24",
+                            "label": "Enable Collection",
+                            "name": "enable_collection",
+                            "type": "true_false",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "message": "",
+                            "default_value": 1,
+                            "ui": 0,
+                            "ui_on_text": "",
+                            "ui_off_text": ""
+                        },
+                        {
+                            "key": "field_5f96ce8fb8d25",
+                            "label": "Enable Delivery",
+                            "name": "enable_delivery",
+                            "type": "true_false",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "message": "",
+                            "default_value": 0,
+                            "ui": 0,
+                            "ui_on_text": "",
+                            "ui_off_text": ""
+                        },
+                        {
+                            "key": "field_5f96e59e82bdd",
+                            "label": "Enable Preorder",
+                            "name": "enable_preorder",
+                            "type": "true_false",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "message": "",
+                            "default_value": 0,
+                            "ui": 0,
+                            "ui_on_text": "",
+                            "ui_off_text": ""
                         }
                     ]
                 }
             ]
         },
         {
-            "key": "field_5f7cb401e8410",
-            "label": "Times",
-            "name": "times",
+            "key": "field_5f96f6917724b",
+            "label": "Data",
+            "name": "data",
             "type": "group",
             "instructions": "",
             "required": 0,
@@ -325,46 +254,122 @@
             "layout": "block",
             "sub_fields": [
                 {
-                    "key": "field_5f7cb40de8411",
-                    "label": "Average Collection Time",
-                    "name": "average_collection_time",
-                    "type": "number",
+                    "key": "field_5f7cb401e8410",
+                    "label": "Times",
+                    "name": "times",
+                    "type": "group",
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
-                        "width": "50",
+                        "width": "",
                         "class": "",
                         "id": ""
                     },
-                    "default_value": "",
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": "mins",
-                    "min": "",
-                    "max": "",
-                    "step": ""
+                    "layout": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_5f7cb40de8411",
+                            "label": "Average Collection Time",
+                            "name": "average_collection_time",
+                            "type": "number",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "mins",
+                            "min": "",
+                            "max": "",
+                            "step": ""
+                        },
+                        {
+                            "key": "field_5f7cb41ce8412",
+                            "label": "Average Delivery Time",
+                            "name": "average_delivery_time",
+                            "type": "number",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "mins",
+                            "min": "",
+                            "max": "",
+                            "step": ""
+                        }
+                    ]
                 },
                 {
-                    "key": "field_5f7cb41ce8412",
-                    "label": "Average Delivery Time",
-                    "name": "average_delivery_time",
-                    "type": "number",
+                    "key": "field_5f96f7cd474a5",
+                    "label": "Delivery",
+                    "name": "delivery",
+                    "type": "group",
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
-                        "width": "50",
+                        "width": "",
                         "class": "",
                         "id": ""
                     },
-                    "default_value": "",
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": "mins",
-                    "min": "",
-                    "max": "",
-                    "step": ""
+                    "layout": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_5f96f7d8474a6",
+                            "label": "Charge",
+                            "name": "charge",
+                            "type": "number",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "placeholder": "",
+                            "prepend": "£",
+                            "append": "",
+                            "min": "",
+                            "max": "",
+                            "step": ""
+                        },
+                        {
+                            "key": "field_5f96f7e6474a7",
+                            "label": "Minimum Spend",
+                            "name": "minimum_spend",
+                            "type": "number",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "placeholder": "",
+                            "prepend": "£",
+                            "append": "",
+                            "min": "",
+                            "max": "",
+                            "step": ""
+                        }
+                    ]
                 }
             ]
         }
@@ -398,5 +403,5 @@
     ],
     "active": true,
     "description": "",
-    "modified": 1602449009
+    "modified": 1603729413
 }

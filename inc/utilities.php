@@ -28,72 +28,38 @@ function gu_get_day_of_week() {
     return $days[$current_day_index];
 }
 
-function gu_is_restaurant_open( $restaurant ){
-
-    $is_open = false;
-    $current_day = gu_get_day_of_week();
-    $current_time = date_i18n('g:i a');
-
-    $opening_hours = get_field('opening_hours', $restaurant->ID);
-    $opening_time = null;
-    $closing_time = null;
-    
-
-    if( $opening_hours['open_for_business'] && $opening_hours['days'] ):
-
-        foreach( $opening_hours['days'] as $day):
-            if($day['day'] == $current_day):
-                $opening_time = $day['opening_time'];
-                $closing_time = $day['closing_time'];
-            endif;
-        endforeach;
-    endif;
-
-    if($opening_time !== null && $closing_time !== null):
-        $is_open = strtotime($current_time) >= strtotime($opening_time) && strtotime($current_time) < strtotime($closing_time);
-    endif;
-
-    return $is_open;
-}
-
 function gu_is_service_available( $restaurant, $service ){
 
   $is_service_available = false;
-  $current_day = date('w');
+  $current_day = date('N') - 1;
   $current_time = date_i18n('H:i');
 
-  $opening_hours = get_field('opening_hours', $restaurant->ID);
-  $service_hours = [];
-  
+  $all_days = get_field('opening_hours', $restaurant->ID)['days'];
 
-  if( $opening_hours['open_for_business'] ):
+  $current_day_times = $all_days[$current_day];
+  $previous_day_times = $current_day > 0 ? $all_days[$current_day - 1] : $all_days[6];
 
-      switch ($service) {
-          case 'collection':
-              $service_hours = $opening_hours['collection_hours'];
-              break;
-          case 'delivery':
-              $service_hours = $opening_hours['delivery_hours'];
-              break;
-      }
+  if(get_field('opening_hours', $restaurant->ID)['open_for_business']):
 
-  endif;
-
-  $previous_day_times = $current_day > 0 ? $service_hours[$current_day - 1] : $service_hours[6];
-  $current_day_times = $service_hours[$current_day];
-
-  if($current_day_times && $previous_day_times):
-
-    // Previous day service ends the following day
+    // If service was available the previous day and times are set.
+    if($previous_day_times['enable_'.$service] && $previous_day_times[$service.'_end'] && $previous_day_times[$service.'_start']):
+      
+      // Previous day service ends the following day
       if( strtotime($previous_day_times[$service.'_end']) < strtotime($previous_day_times[$service.'_start']) ):
-
+        
         // If current time is before previous day service end then service is available.
         if( strtotime($current_time) < strtotime($previous_day_times[$service.'_end']) ):
           $is_service_available = true;
+          return $is_service_available;
         endif;
-
+        
       endif;
 
+    endif;
+      
+     // If service is available today and times are set.
+    if($current_day_times['enable_'.$service] && $current_day_times[$service.'_start'] && $current_day_times[$service.'_end']):
+        
       // If current day service ends after start time (ie. same day)
       if( strtotime($current_day_times[$service.'_end']) > strtotime($current_day_times[$service.'_start'])):
 
@@ -105,11 +71,23 @@ function gu_is_service_available( $restaurant, $service ){
 
       endif;
 
+    endif;
 
   endif;
 
-
   return $is_service_available;
+
+}
+
+function gu_is_preorder_available( $restaurant ){
+
+  $current_day = date('N') - 1;
+  $all_days = get_field('opening_hours', $restaurant->ID)['days'];
+
+  $current_day_times = $all_days[$current_day];
+
+  $is_preorder_available = $current_day_times['enable_preorder'] && get_field('opening_hours', $restaurant->ID)['open_for_business'];
+  return $is_preorder_available;
 }
 
 function gu_get_reviews_by_restaurant($restaurant){
