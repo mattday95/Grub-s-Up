@@ -1,6 +1,6 @@
 .c-restaurant-card {
     margin-bottom: 10px;
-    background-color: #FFF;
+    background-color: $white;
     
     > a {
         display: flex;
@@ -12,7 +12,7 @@
         height: 100px;
         min-width: 100px;
         border-radius: 4px;
-        border: 1px solid #eee;
+        border: 1px solid $lg_1;
         overflow: hidden;
 
         img {
@@ -30,7 +30,7 @@
         display: flex;
         flex-direction: column;
         padding: 5px 10px;
-        border-right: 1px solid #eee;
+        border-right: 1px solid $lg_1;
 
         &__header {
 
@@ -40,7 +40,7 @@
 
             > h2 {
                 font-size: 16px;
-                color: #333;
+                color: $dg_1;
             }
         }
 
@@ -48,7 +48,7 @@
         &__cuisines {
             display: flex;
             font-size: 14px;
-            color: #888;
+            color: $mg_1;
 
             li {
 
@@ -74,25 +74,25 @@
                     margin-right: 5px;
                     width: 20px;
                     height: 20px;
-                    fill : #d82927;
+                    fill : $red;
                 }
 
                 span {
                     font-size: 13px;
-                    color: #555;
+                    color: $mg_2;
                     line-height: 12px;
 
                     &.delivery-charge {
                         margin-right: 2px;
 
                         &.delivery-charge-free {
-                            color: #f47925;
+                            color: $orange;
                         }
                     }
 
                     &.minimum-spend {
                         font-size: 10px;
-                        color: #888;
+                        color: $mg_1;
                     }
                 }
             }
@@ -113,7 +113,7 @@
         > span {
             display: block;
             font-size: 12px;
-            color: #198ebc;
+            color: $mid_blue;
             line-height: 12px;
             text-align: center;
             margin-bottom: 10px;

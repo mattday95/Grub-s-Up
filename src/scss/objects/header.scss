@@ -1,8 +1,7 @@
 .o-header {
     padding: .5rem 1rem;
-    background-color: green;
-    background: #fff;
-    box-shadow: 0 2px 12px 0 rgba(0,0,0,0.1);
+    background: $white;
+    box-shadow: 0 2px 12px 0 rgba($black,0.1);
 
     &__logo {
         padding-top: .3125rem;

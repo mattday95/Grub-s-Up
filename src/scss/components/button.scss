@@ -11,37 +11,37 @@
     outline: none;
 
     &--primary {
-        background-color: #d82927;
-        border-color: #d82927;
+        background-color: $red;
+        border-color: $red;
         color: #fff;
         letter-spacing: 1px;
         font-weight: 300;
 
         &:hover {
             background-color: transparent;
-            color:  #d82927;
+            color:  $red;
         }
     }
 
     &--order {
-        background-color: #63c156;
-        border-color: #63c156;
+        background-color: $green;
+        border-color: $green;
         color: #fff;
         font-size: .7rem;
         font-weight: 500;
     }
 
     &--preorder {
-        background: #42bedb;
-        border-color: #42bedb;
+        background: $light_blue;
+        border-color: $light_blue;
         font-size: .7rem;
-        color: #fff;
+        color: $white;
     }
 
     &--closed {
-        border-color: #eee;
+        border-color: $lg_1;
         font-size: .7rem;
-        color: #d82927;
+        color: $red;
         letter-spacing: 2px;
         background: none;
     }

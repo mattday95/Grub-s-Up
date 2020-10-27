@@ -59,7 +59,7 @@ function gu_get_restaurants( WP_REST_Request $request ) {
 
         $restaurant_location = get_field('restaurant_location', $restaurant->ID);
         $distance_to_restaurant = gu_calculate_distance($customer_location['lat'], $customer_location['lng'], $restaurant_location['lat'], $restaurant_location['lng'], "M");
-        $delivery_radius = get_field('delivery_radius', $restaurant->ID) ?  get_field('delivery_radius', $restaurant->ID) : $search_radius;
+        $delivery_radius = get_field('data', $restaurant->ID)['delivery']['delivery_radius'] ? get_field('data', $restaurant->ID)['delivery']['delivery_radius'] : $search_radius;
 
         if( $distance_to_restaurant <= $search_radius && $distance_to_restaurant <= $delivery_radius):
             array_push($filtered_restaurants, $restaurant);

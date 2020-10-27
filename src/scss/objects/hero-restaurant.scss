@@ -18,7 +18,7 @@
         width: 90px;
         border-radius: 4px;
         overflow: hidden;
-        background-color: #FFF;
+        background-color: $white;
 
         img {
             position: absolute;
@@ -36,7 +36,7 @@
             margin-right: 20px;
             font-size: 20px;
             font-weight: normal;
-            color: #fff;
+            color: $white;
             text-align: left;
         }
 
@@ -54,7 +54,7 @@
                 }
 
                 &:not(:last-of-type){
-                    border-right: 1px solid #eee;
+                    border-right: 1px solid $lg_1;
                 }
 
                 .cell {
@@ -65,14 +65,14 @@
                         min-width: 21px;
                         height: 21px;
                         margin-right: 5px;
-                        fill: #d82927;
+                        fill: $red;
                     }
 
                     span {
 
                         &.meta-value {
                             font-size: 12px;
-                            color: #fff;
+                            color: $white;
                             line-height: 12px;
                             font-weight: 400;
                             vertical-align: middle;
@@ -80,7 +80,7 @@
 
                         &.meta-description {
                             font-size: 11px;
-                            color: #ccc;
+                            color: $lg_2;
                             line-height: 12px;
                             font-weight: 300;
                             text-align: left;
@@ -103,6 +103,6 @@
         right: 0;
         bottom: 0;
         left: 0;
-        background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5));
+        background: linear-gradient(rgba($black, 0.7), rgba($black, 0.5));
     }
 }

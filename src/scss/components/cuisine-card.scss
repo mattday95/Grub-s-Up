@@ -22,21 +22,21 @@
     }
 
     &__description {
-        background: #fff;
+        background: $white;
         padding: 3px;
         margin-bottom: 10px;
         font-size: 12px;
-        color: #888;
+        color: $mg_1;
         vertical-align: middle;
         word-break: break-word;
         border-radius: 0 0 4px 4px;
-        border: 1px solid #eee;
+        border: 1px solid $lg_1;
         border-top: none;
     }
 
     &--active {
         #{$self}__thumbnail {
-            background-color: #000;
+            background-color: $black;
 
             img {
                 opacity: .3;

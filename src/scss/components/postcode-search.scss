@@ -2,9 +2,9 @@
     padding: 15px;
     display: flex;
     width: 100%;
-    background-color: #fff;
+    background-color: $white;
     background-clip: initial;
-    border: 1px solid rgba(0,0,0,.125);
+    border: 1px solid rgba($black,.125);
     border-radius: .25rem;
 
     input {
@@ -12,7 +12,7 @@
         outline: none;
         border: none;
         font-size: 16px;
-        color: #333;
+        color: $dg_1;
         line-height: 30px;
         padding: 0 .5rem;
     }

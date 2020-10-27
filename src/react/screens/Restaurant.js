@@ -68,7 +68,7 @@ export default class Restaurant extends Component {
                                             <li className="grid-y cell medium-2">
                                                 <div className="cell">
                                                     <BiShoppingBag/>
-                                                    <span className="meta-value">{restaurant.times.collection} mins</span>
+                                                    <span className="meta-value">{restaurant.collection_available ? `${restaurant.times.collection} mins` : 'Closed'}</span>
                                                 </div>
                                                 <div className="cell">
                                                     <span className="meta-description">Collection Time</span>
@@ -77,20 +77,26 @@ export default class Restaurant extends Component {
                                             <li className="grid-y cell medium-2">
                                                 <div className="cell">
                                                     <RiEBikeFill/>
-                                                    <span className="meta-value">{restaurant.times.delivery} mins</span>
+                                                    <span className="meta-value">{restaurant.delivery_available ? `${restaurant.times.delivery} mins` : 'Closed'}</span>
                                                 </div>
                                                 <div className="cell">
                                                     <span className="meta-description">Delivery Time</span>
                                                 </div>
                                             </li>
-                                            <li className="grid-y cell medium-2">
-                                                <div className="cell">
-                                                    <span className="meta-value">Delivery: £1.00</span>
-                                                </div>
-                                                <div className="cell">
-                                                    <span className="meta-description">Min: £10.00</span>
-                                                </div>
-                                            </li>
+                                            {   
+                                                restaurant.delivery.charge && restaurant.delivery_available &&
+                                                <li className="grid-y cell medium-2">
+                                                    <div className="cell">
+                                                        <span className="meta-value">{parseInt(restaurant.delivery.charge) > 0 ? `Delivery: £${restaurant.delivery.charge}` : 'Delivery: Free'}</span>
+                                                    </div>
+                                                    {
+                                                        parseInt(restaurant.delivery.minimum_spend) > 0 &&
+                                                        <div className="cell">
+                                                            <span className="meta-description">Min: £{restaurant.delivery.minimum_spend}</span>
+                                                        </div>
+                                                    }
+                                                </li>
+                                            }
                                         </ul>
                                     </div>
                                 </div>

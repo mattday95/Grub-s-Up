@@ -10,8 +10,8 @@
 
     &__tag {
         max-width: 60px;
-        background: #f47925;
-        color: #fff;
+        background: $orange;
+        color: $white;
         text-transform: uppercase;
         padding: 3px;
         border-radius: 2px;
@@ -19,7 +19,7 @@
 
     &__description {
         margin-top: 2px;
-        color: #888;
+        color: $mg_1;
     }
 
     &--inline {

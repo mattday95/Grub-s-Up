@@ -1,7 +1,7 @@
 .o-listings {
     min-height: 820px;
     margin-top: 40px;
-    background: #f2f2f2;
+    background: $off_white;
 
     &__cuisine-list, &__restaurant-list {
 
@@ -20,7 +20,7 @@
         position: sticky;
         top: 10px;
         padding: 10px;
-        background-color: #FFF;
+        background-color: $white;
 
         &__header {
 
@@ -29,13 +29,13 @@
 
             h3 {
                 font-size: 14px;
-                color: #d82927;
+                color: $red;
             }
 
             span {
                 margin-left: auto;
                 font-size: 12px;
-                color: #198ebc;
+                color: $mid_blue;
                 text-align: right;
                 line-height: 12px;
                 cursor: pointer;
@@ -54,7 +54,7 @@
 
             h3 {
                 font-size: 16px;
-                color: #63c156;
+                color: $green;
             }
 
             &--closed {
@@ -62,7 +62,7 @@
             margin-top: 20px;
 
                 h3 {
-                    color: #d82927;
+                    color: $red;
                 }
             }
         }

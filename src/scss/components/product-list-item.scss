@@ -1,7 +1,7 @@
 .c-product-list-item {
     display: flex;
     font-size: 14px;
-    color: #333;
+    color: $dg_1;
 
     &__details {
 
@@ -18,7 +18,7 @@
 
         .product-description {
             font-size: 11px;
-            color: #888;
+            color: $mg_1;
             letter-spacing: 0;
             text-align: left;
         }
@@ -27,7 +27,7 @@
     &__price {
         width: 20%;
         font-size: 14px;
-        color: #555;
+        color: $mg_2;
         letter-spacing: 0;
         text-align: right;
     }

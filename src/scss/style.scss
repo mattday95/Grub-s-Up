@@ -8,8 +8,10 @@
 
 @include foundation-xy-grid-classes;
 
+@import 'base/palette';
+
 body {
-    background-color: #f2f2f2;
+    background-color: $off_white;
 }
 
 ul {
@@ -20,6 +22,7 @@ ul {
 a {
     text-decoration: none;
 }
+
 
 @import 'utilities/align-x';
 

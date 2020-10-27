@@ -2,8 +2,8 @@
     display: inline-flex;
     align-items: center;
     padding: .5rem;
-    background-color: #FFF;
-    border-bottom: 1px solid #eee;
+    background-color: $white;
+    border-bottom: 1px solid $lg_1;
     cursor: pointer;
 
     input {
@@ -11,25 +11,25 @@
         font-size: 1rem;
         font-weight: 400;
         line-height: 1.5;
-        color: #495057;
+        color: $mg_blue;
         border: none;
         outline: none;
         cursor: pointer;
 
         &::-webkit-input-placeholder { /* Edge */
-            color: rgb(207, 207, 207);
+            color: $lg_2;
             font-size: .9em;
             font-weight: lighter;
           }
           
         &:-ms-input-placeholder { /* Internet Explorer 10-11 */
-            color: rgb(207, 207, 207);
+            color: $lg_2;
             font-weight: lighter;
             font-size: .9em;
         }
         
         &::placeholder {
-            color: rgb(207, 207, 207);
+            color: $lg_2;
             font-weight: lighter;
             font-size: .9em;
         }

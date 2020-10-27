@@ -40,27 +40,6 @@
             "height": ""
         },
         {
-            "key": "field_5f7f582560dc4",
-            "label": "Delivery Radius",
-            "name": "delivery_radius",
-            "type": "number",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": "miles",
-            "min": "",
-            "max": "",
-            "step": ""
-        },
-        {
             "key": "field_5f7b79029cc3d",
             "label": "Opening Hours",
             "name": "opening_hours",
@@ -368,6 +347,27 @@
                             "min": "",
                             "max": "",
                             "step": ""
+                        },
+                        {
+                            "key": "field_5f7f582560dc4",
+                            "label": "Delivery Radius",
+                            "name": "delivery_radius",
+                            "type": "number",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "miles",
+                            "min": "",
+                            "max": "",
+                            "step": ""
                         }
                     ]
                 }
@@ -403,5 +403,5 @@
     ],
     "active": true,
     "description": "",
-    "modified": 1603729413
+    "modified": 1603740850
 }

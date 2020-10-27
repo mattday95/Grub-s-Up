@@ -1,5 +1,5 @@
 .c-add-to-cart {
-    border: 1px solid #63c156;
+    border: 1px solid $green;
     display: inline-flex;
     border-radius: 2px;
     cursor: pointer;
@@ -8,9 +8,9 @@
 
         &:first-of-type {
             padding: .25rem 1rem;
-            background: #fff;
+            background: $white;
             font-size: 12px;
-            color: #63c156;
+            color: $green;
             letter-spacing: 0;
             text-align: center;
         }
@@ -19,8 +19,8 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background-color: #63c156;
-            color: #FFF;
+            background-color: $green;
+            color: $white;
             min-width: 20px;
             text-align: center;
         }

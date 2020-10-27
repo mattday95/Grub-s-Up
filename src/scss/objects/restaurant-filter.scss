@@ -3,7 +3,7 @@
     align-items: center;
     padding: .5rem 1rem;
     margin-bottom: 20px;
-    background-color: #FFF;
+    background-color: $white;
 
     &__search {
         width: 70%;
@@ -18,7 +18,7 @@
             margin-left: auto;
             font-size: 14px;
             font-weight: lighter;
-            color: #888;
+            color: $mg_1;
         }
     }
 }
