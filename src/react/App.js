@@ -23,7 +23,7 @@ export default class App extends Component {
                 <Switch>
                     <Route path="/" exact component={Home}/>
                     <Route path="/list/:postcode/" component={Listing}/>
-                    <Route path="/restaurant/:restaurant/" component={Restaurant}/>
+                    <Route path="/ordernow/:restaurant/:id" component={Restaurant}/>
                     <Route path="/" render={() => <div>404. Not found.</div>}/>
                 </Switch>
             </BrowserRouter>
