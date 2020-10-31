@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import axios from 'axios';
 import {AiFillStar, AiFillInfoCircle, AiFillHeart} from 'react-icons/ai';
 import {Link} from 'react-router-dom';
 import {BsSearch} from 'react-icons/bs';
@@ -14,17 +15,27 @@ export default class Restaurant extends Component {
 
     constructor(props){
         super(props);
+        this.state = {
+            products: []
+        }
     }
 
     componentDidMount() {
 
-        console.log(this.props.location);
+        const apiBaseURL = 'http://grubsup.local/api/consumer';
+        const endpoint = '/products';
+
+        axios.get(apiBaseURL + endpoint )
+            .then(res => {
+                const data = JSON.parse(res.data);
+                this.setState({products: data.data});
+            });
     }
 
     render() {
 
         const restaurant = this.props.location.state;
-        console.log(restaurant);
+        const {products} = this.state;
 
         return(
             <div>

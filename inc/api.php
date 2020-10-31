@@ -12,9 +12,9 @@ add_action( 'rest_api_init', function () {
         'methods' => 'GET',
         'callback' => 'gu_get_restaurants',
     ) );
-    register_rest_route( 'consumer', '/cuisines', array(
+    register_rest_route( 'consumer', '/products', array(
         'methods' => 'GET',
-        'callback' => 'gu_get_all_cuisines',
+        'callback' => 'gu_get_products',
     ) );
 } );
 
@@ -145,26 +145,38 @@ function gu_get_restaurants( WP_REST_Request $request ) {
     return $data;
 }
 
-function gu_get_all_cuisines( $data ) {
+function gu_get_products( $data ) {
 
     $data = [];
 
-    $cuisines = get_terms( 'cuisines', array(
-        'hide_empty' => true,
-    ) );
+    $api_token = get_field('store_access_token', 'option');
+    $api_path = get_field('store_api_path', 'option');
+    $curl = curl_init();
 
-    if($cuisines):
+    curl_setopt_array($curl, array(
+        CURLOPT_URL => $api_path."catalog/products?include=custom_fields",
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_ENCODING => "",
+        CURLOPT_MAXREDIRS => 10,
+        CURLOPT_TIMEOUT => 30,
+        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+        CURLOPT_CUSTOMREQUEST => "GET",
+        CURLOPT_HTTPHEADER => array(
+            "x-auth-token: ".$api_token.""
+        ),
+    ));
 
-        foreach ($cuisines as $cuisine):
+    $response = curl_exec($curl);
+    $err = curl_error($curl);
 
-            $data[] = array(
-                'cuisine' => $cuisine,
-                'featured_image' => get_field('featured_image', $cuisine->taxonomy . '_' . $cuisine->term_id)['url']
-            );
+    curl_close($curl);
 
-        endforeach;
+    if ($err) {
+        echo "cURL Error #:" . $err;
+    } else {
+        $data = $response;
+    }
 
-    endif;
- 
+    
     return $data;
 }

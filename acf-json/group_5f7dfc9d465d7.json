@@ -123,7 +123,7 @@
         },
         {
             "key": "field_5f7dfca77652d",
-            "label": "Google API",
+            "label": "Integrations",
             "name": "",
             "type": "tab",
             "instructions": "",
@@ -139,10 +139,86 @@
         },
         {
             "key": "field_5f7dfcc07652e",
-            "label": "API Key",
+            "label": "Google API Key",
             "name": "google_api_key",
             "type": "text",
             "instructions": "Supply your Google Console api key here. Without this, the restaurant map location, and postcode geolocation features will not function.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_5f9dadc229c96",
+            "label": "Store Access Token",
+            "name": "store_access_token",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_5f9dade329c97",
+            "label": "Store Client ID",
+            "name": "store_client_id",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_5f9dadf729c98",
+            "label": "Store Client Secret",
+            "name": "store_client_secret",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_5f9dae1929c99",
+            "label": "Store API Path",
+            "name": "store_api_path",
+            "type": "text",
+            "instructions": "",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -293,5 +369,5 @@
     "hide_on_screen": "",
     "active": true,
     "description": "",
-    "modified": 1603572624
+    "modified": 1604169254
 }
