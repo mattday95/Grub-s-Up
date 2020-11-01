@@ -22,7 +22,7 @@ export default class Restaurant extends Component {
 
     componentDidMount() {
 
-        const apiBaseURL = 'http://grubsup.local/api/consumer';
+        const apiBaseURL = 'http://grubs-up-multisite.local/api/consumer';
         const endpoint = '/products';
 
         axios.get(apiBaseURL + endpoint )

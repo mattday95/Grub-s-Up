@@ -40,6 +40,28 @@
             "height": ""
         },
         {
+            "key": "field_5f9ef615a8c6b",
+            "label": "Restaurant Subdomain",
+            "name": "restaurant_subdomain",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": [],
+            "default_value": false,
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 0,
+            "return_format": "value",
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
             "key": "field_5f7b79029cc3d",
             "label": "Opening Hours",
             "name": "opening_hours",
@@ -403,5 +425,5 @@
     ],
     "active": true,
     "description": "",
-    "modified": 1603740850
+    "modified": 1604253226
 }
