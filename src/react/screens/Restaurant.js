@@ -16,26 +16,26 @@ export default class Restaurant extends Component {
     constructor(props){
         super(props);
         this.state = {
-            products: []
+            menu: []
         }
     }
 
     componentDidMount() {
 
-        const apiBaseURL = 'http://grubs-up-multisite.local/api/consumer';
-        const endpoint = '/products';
+        const URL = 'http://juicy-gossip.grubs-up.local/api/consumer/menus?id=134';
 
-        axios.get(apiBaseURL + endpoint )
+        axios.get(URL)
             .then(res => {
-                const data = JSON.parse(res.data);
-                this.setState({products: data.data});
+                const data = res.data;
+                console.log(data);
+                this.setState({menu: data});
             });
     }
 
     render() {
 
         const restaurant = this.props.location.state;
-        const {products} = this.state;
+        const {menu} = this.state;
 
         return(
             <div>
@@ -163,124 +163,68 @@ export default class Restaurant extends Component {
                                     <BsSearch size='14px'/>
                                 </div>
                             </div>
-                            <div className="c-product-group">
-                                <div className="c-product-group__header">
-                                    <span>Best Selling</span>
-                                </div>
-                                <div className="c-product-group__sub-cat">
-                                    <div className="c-product-group__sub-cat__header">
-                                        <span>Margherita Pizza</span>
-                                        <p>Cheese and tomato</p>
-                                    </div>
-                                    <div className="c-product-list-item">
-                                        <div className="c-product-list-item__details">
-                                            <h4 className="product-title">Product Title</h4>
-                                            <p className="product-description">4pcs strips, 5pcs bites, 15pcs popcorn chicken, 1 fries, coleslaw, garlic mayo and pepsi can</p>
+                            {
+                                menu.map(productGroup => {
+
+                                const subgroups = productGroup.subgroups;
+
+                                return(
+
+                                    <div className="c-product-group">
+                                        <div className="c-product-group__header">
+                                            <span>{productGroup.group_title}</span>
                                         </div>
-                                        <span className="c-product-list-item__price">£7.50</span>
-                                        <div className="c-product-list-item__add-to-cart">
-                                            <div className="c-add-to-cart">
-                                                <span>Add</span>
-                                                <span>+</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="c-product-list-item">
-                                        <div className="c-product-list-item__details">
-                                            <h4 className="product-title">Product Title</h4>
-                                            <p className="product-description">4pcs strips, 5pcs bites, 15pcs popcorn chicken, 1 fries, coleslaw, garlic mayo and pepsi can</p>
-                                        </div>
-                                        <span className="c-product-list-item__price">£7.50</span>
-                                        <div className="c-product-list-item__add-to-cart">
-                                            <div className="c-add-to-cart">
-                                                <span>Add</span>
-                                                <span>+</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="c-product-list-item">
-                                        <div className="c-product-list-item__details">
-                                            <h4 className="product-title">Product Title</h4>
-                                        </div>
-                                        <span className="c-product-list-item__price">£7.50</span>
-                                        <div className="c-product-list-item__add-to-cart">
-                                            <div className="c-add-to-cart">
-                                                <span>Add</span>
-                                                <span>+</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="c-product-group__sub-cat">
-                                    <div className="c-product-group__sub-cat__header">
-                                        <span>Margherita Pizza</span>
-                                        <p>Cheese and tomato</p>
-                                    </div>
-                                    <div className="c-product-list-item">
-                                        <p>Hot Stuff Special Kebab on Naan</p>
-                                    </div>
-                                    <div className="c-product-list-item">
-                                        <p>Hot Stuff Special Kebab on Naan</p>
-                                    </div>
-                                    <div className="c-product-list-item">
-                                        <p>Hot Stuff Special Kebab on Naan</p>
-                                    </div>
-                                </div>
-                            </div> 
-                            <div className="c-product-group">
-                                <div className="c-product-group__header">
-                                    <span>Pizzas</span>
-                                </div>
-                                <div className="c-product-group__sub-cat">
-                                    <div className="c-product-list-item">
-                                        <p>Hot Stuff Special Kebab on Naan</p>
-                                    </div>
-                                    <div className="c-product-list-item">
-                                        <p>Hot Stuff Special Kebab on Naan</p>
-                                    </div>
-                                    <div className="c-product-list-item">
-                                        <p>Hot Stuff Special Kebab on Naan</p>
-                                    </div>
-                                </div>
-                            </div>  
-                            <div className="c-product-group">
-                                <div className="c-product-group__header">
-                                    <span>Calzone</span>
-                                </div>
-                                <div className="c-product-group__sub-cat">
-                                    <div className="c-product-list-item">
-                                        <p>Hot Stuff Special Kebab on Naan</p>
-                                    </div>
-                                    <div className="c-product-list-item">
-                                        <p>Hot Stuff Special Kebab on Naan</p>
-                                    </div>
-                                    <div className="c-product-list-item">
-                                        <p>Hot Stuff Special Kebab on Naan</p>
-                                    </div>
-                                </div>
-                                <div className="c-product-group__sub-cat">
-                                    <div className="c-product-list-item">
-                                        <p>Hot Stuff Special Kebab on Naan</p>
-                                    </div>
-                                    <div className="c-product-list-item">
-                                        <p>Hot Stuff Special Kebab on Naan</p>
-                                    </div>
-                                    <div className="c-product-list-item">
-                                        <p>Hot Stuff Special Kebab on Naan</p>
-                                    </div>
-                                </div>
-                                <div className="c-product-group__sub-cat">
-                                    <div className="c-product-list-item">
-                                        <p>Hot Stuff Special Kebab on Naan</p>
-                                    </div>
-                                    <div className="c-product-list-item">
-                                        <p>Hot Stuff Special Kebab on Naan</p>
-                                    </div>
-                                    <div className="c-product-list-item">
-                                        <p>Hot Stuff Special Kebab on Naan</p>
-                                    </div>
-                                </div>
-                            </div>   
+                                        {
+                                            subgroups.map(subgroup => {
+
+                                            const products = subgroup.products;
+
+                                            return(
+
+                                                <div className="c-product-group__sub-cat">
+                                                    <div className="c-product-group__sub-cat__header">
+                                                        <span>{subgroup.subgroup_title}</span>
+                                                        <p>{subgroup.subgroup_description}</p>
+                                                    </div>
+                                                    {
+                                                        products.map(product => {
+
+                                                            return(
+
+                                                                <div className="c-product-list-item">
+                                                                    <div className="c-product-list-item__details">
+                                                                        <h4 className="product-title">{product.post_title}</h4>
+                                                                        <p className="product-description">4pcs strips, 5pcs bites, 15pcs popcorn chicken, 1 fries, coleslaw, garlic mayo and pepsi can</p>
+                                                                    </div>
+                                                                    <span className="c-product-list-item__price">£7.50</span>
+                                                                    <div className="c-product-list-item__add-to-cart">
+                                                                        <div className="c-add-to-cart">
+                                                                            <span>Add</span>
+                                                                            <span>+</span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                
+                                                            )
+
+                                                            
+                                                        })
+                                                    }
+                                                    
+                                                </div>
+                                            )
+
+
+                                            })
+                                        }
+                            
+                                    </div> 
+
+                                )
+
+
+                                })
+                            }  
                         </div>
                         <div className="cell medium-4 o-basket">
                             <h3>Basket</h3>

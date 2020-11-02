@@ -22,7 +22,7 @@ export default class Listing extends Component {
 
     componentDidMount() {
 
-        const apiBaseURL = 'http://grubs-up-multisite.local/api/consumer';
+        const apiBaseURL = 'http://grubs-up.local/api/consumer';
         const restaurantEndpoint = '/restaurants';
         const postcodeQuery =   this.props.match.params.postcode ? `?postcode=${this.props.match.params.postcode}` : '';
 
